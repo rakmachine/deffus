@@ -1,0 +1,1 @@
+var json_manger_danser_9 = {"type":"FeatureCollection","name":"manger_danser_9","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[5.834861417954013,43.447245468964013]}}]}

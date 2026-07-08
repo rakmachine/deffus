@@ -1,0 +1,1 @@
+var json_espace_blessures_nettoyage_10 = {"type":"FeatureCollection","name":"espace_blessures_nettoyage_10","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[5.834593532719031,43.44737512668236]}}]}

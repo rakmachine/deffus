@@ -1,0 +1,1 @@
+var json_douche_8 = {"type":"FeatureCollection","name":"douche_8","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"nr_douche":1.0},"geometry":{"type":"Point","coordinates":[5.834641406397091,43.447500921623558]}}]}
