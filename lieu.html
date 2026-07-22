@@ -71,7 +71,7 @@
 <body>
 
   <nav>
-    <div class="nav-brand"><a href="https://rakmachine.github.io/deffus/map/index.html">Der Deff... édition hallowe... </a></div>
+    <div class="nav-brand"><a href="index.html">Der Deff... édition hallowe... </a></div>
     <div class="nav-actions">
       <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -89,12 +89,32 @@
   </nav>
 
   <main>
-    <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
-    <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... " data-en="Der Deffus welcomes you with open arms - but be careful not go get lost...">Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...</p>
+  <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
+  <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... " data-en="Der Deffus welcomes you with open arms - but be careful not to get lost...">Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...</p>
 
-    <!-- YOUR QGIS2WEB MAP IFRAME GOES HERE -->
-    <iframe class="qgis-map-frame" src="https://rakmachine.github.io/deffus/map/index.html"></iframe>
-  </main>
+  <h2 data-fr="Accès et Transport" data-en="Access & Transport">Accès et Transport</h2>
+  
+  <p id="transport-text">
+    L&apos;adresse est 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume mais sinon tu peux juste <a href="https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr" target="_blank" style="color: var(--bordeaux); font-weight: bold;">voir la loc sur google maps directement ici.</a> Pour ceux qui arriveront en transports publics l&apos;arrêt de bus où on viendra vous chercher s&apos;appelle Lycée Janetti, <a href="https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7" target="_blank" style="color: var(--bordeaux); font-weight: bold;">ici le lien.</a> Les fiches d&apos;horaires de bus sont accessibles <a href="https://zou.maregionsud.fr/" target="_blank" style="color: var(--bordeaux); font-weight: bold;">ici</a> pour les gens qui arrivent depuis Aix-en-Provence TGV, et <a href="https://itineraires-zou.maregionsud.fr/fr/horaires/Zou-!-Express/Bus/ligne/94/direction/RETURN/14573#" target="_blank" style="color: var(--bordeaux); font-weight: bold;">ici</a> pour ceux qui arrivent depuis Marseille St Charles.
+  </p>
+
+  <!-- 2nd Subtitle & Text -->
+  <h2 data-fr="Parking et Arrivée" data-en="Parking & Arrival">Parking et Arrivée</h2>
+  <p data-fr="Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est délimité dans la carte que j&apos;ai faite ci-dessous. Si vous êtes en camping car ou van vous pouvez suivre les panneaux ou regarder la carte aussi, c&apos;est un peu plus loin que le parking." 
+     data-en="Once you have passed the gate, follow the sign that says CAVE until you reach the wine cellar which will be where we hold meals and party. You&apos;ll see there is parking space along the vines there, and if you&apos;re coming with a camping car or van there&apos;s also a sign you can follow with the spots you can take. Check the map I made for the exact location of the parking and camping space and the access route.">
+    Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est délimité dans la carte que j&apos;ai faite ci-dessous. Si vous êtes en camping car ou van vous pouvez suivre les panneaux ou regarder la carte aussi, c&apos;est un peu plus loin que le parking.
+  </p>
+
+  <!-- 3rd Subtitle right above the map -->
+  <h2 data-fr="Carte" data-en="Map">Carte</h2>
+  <p data-fr="Ci-dessous un petit kiff de carto voilà je vous propose une carte du vignoble avec, attention c&apos;est important: l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essayez de respecter les zones au max svp" 
+     data-en="I nerded out and made a lil map of the vineyard so you can see where you&apos;re allowed to park, camp, where we&apos;ll be eating and partying, where to pee, shower.... have a good look at the map and please respect the areas as much as possible">
+    Ci-dessous un petit kiff de carto voilà je vous propose une carte du vignoble avec, attention c&apos;est important: l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essayez de respecter les zones au max svp
+  </p>
+
+  <!-- YOUR QGIS2WEB MAP IFRAME GOES HERE -->
+  <iframe class="qgis-map-frame" src="https://rakmachine.github.io/deffus/map/index.html"></iframe>
+</main>
 
   <script>
     function toggleMenu() {
