@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lieu et accès, tout ce qu'il faut savoir</title>
-  
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
     :root {
@@ -60,11 +57,13 @@
     h1 { color: var(--bordeaux); font-size: 2.2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--vine-green); padding-bottom: 0.5rem; }
     p { line-height: 1.6; margin-bottom: 1.5rem; }
 
-    #leaflet-map {
-      height: 400px;
+    /* QGIS Map Iframe Styling */
+    .qgis-map-frame {
       width: 100%;
+      height: 500px;
+      border: none;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       margin-top: 1rem;
     }
   </style>
@@ -93,8 +92,8 @@
     <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
     <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... " data-en="Der Deffus welcomes you with open arms - but be careful not go get lost...">Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...</p>
 
-    <!-- Map container -->
-    <div id="leaflet-map"></div>
+    <!-- YOUR QGIS2WEB MAP IFRAME GOES HERE -->
+    <iframe class="qgis-map-frame" src="rakmachine/deffus/map/index.html"></iframe>
   </main>
 
   <script>
@@ -110,31 +109,6 @@
         el.innerText = el.getAttribute(`data-${currentLang}`);
       });
     }
-
-    // Leaflet Map Initialization with EPSG:4326 Rectangle Bounds
-    const map = L.map('leaflet-map');
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    // 1. Define your vineyard bounding rectangle [ [SouthWest], [NorthEast] ]
-    const vineyardBounds = [
-      [43.444635, 5.831671], // South-West corner (Lat, Long)
-      [43.451005,5.844798]  // North-East corner (Lat, Long)
-    ];
-
-    // 2. Draw the rectangle
-    L.rectangle(vineyardBounds, {
-      color: "#2d5a27",      // Vineyard Green outline
-      weight: 2,
-      fillColor: "#6b1d2f",  // Bordeaux Red fill
-      fillOpacity: 0.25
-    }).addTo(map);
-
-    // 3. Automatically center and zoom the map to fit the rectangle bounds
-    map.fitBounds(vineyardBounds);
   </script>
 </body>
 </html>
