@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anniversaire au Vignoble</title>
+  <title>Lieu et accès, tout ce qu'il faut savoir</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <style>
     :root {
       --bordeaux: #6b1d2f;
@@ -17,7 +21,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-color); background-color: var(--off-white); }
 
-    /* Navigation Header */
     nav {
       position: fixed; top: 0; left: 0; width: 100%;
       background-color: var(--bordeaux); color: var(--white);
@@ -35,14 +38,9 @@
       cursor: pointer; font-size: 0.85rem; font-weight: bold;
     }
 
-    /* Top Right Hamburger Button */
-    .hamburger {
-      display: flex; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none;
-    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { width: 25px; height: 3px; background-color: var(--white); border-radius: 2px; }
 
-    /* Dropdown Menu Overlay */
     .nav-menu {
       position: fixed; top: 60px; right: -100%; width: 250px;
       height: calc(100vh - 60px); background-color: var(--bordeaux-dark);
@@ -52,28 +50,29 @@
     .nav-menu.active { right: 0; }
     .nav-menu a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
 
-    /* Hero Background & Overlay */
-    .hero {
-      position: relative; height: 100vh;
-      background: linear-gradient(rgba(107, 29, 47, 0.55), rgba(0, 0, 0, 0.6)), 
-                  url('images/hero-bg.jpg') center/cover no-repeat;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; color: var(--white); padding: 0 1rem;
+    /* Page Content */
+    main {
+      padding: 6rem 1.5rem 3rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 700; }
-    .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; }
 
-    .btn-main {
-      background-color: var(--vine-green); color: var(--white);
-      padding: 0.8rem 1.8rem; text-decoration: none; border-radius: 25px;
-      font-weight: bold; font-size: 1rem; display: inline-block;
+    h1 { color: var(--bordeaux); font-size: 2.2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--vine-green); padding-bottom: 0.5rem; }
+    p { line-height: 1.6; margin-bottom: 1.5rem; }
+
+    #leaflet-map {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="nav-brand"><a href="index.html">Anniversaire 🍷</a></div>
+    <div class="nav-brand"><a href="index.html">Der Deff... édition hallowe... </a></div>
     <div class="nav-actions">
       <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -90,11 +89,13 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <h1 data-fr="Week-end Anniversaire" data-en="Birthday Weekend">Week-end Anniversaire</h1>
-    <p data-fr="Bienvenue ! Utilisez le menu en haut à droite pour naviguer." data-en="Welcome! Use the top-right menu to navigate the site.">Bienvenue ! Utilisez le menu en haut à droite pour naviguer.</p>
-    <a href="contribuer.html" class="btn-main" data-fr="Remplir le Formulaire" data-en="Fill Out Form">Remplir le Formulaire</a>
-  </header>
+  <main>
+    <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
+    <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... " data-en="Der Deffus welcomes you with open arms - but be careful not go get lost...">Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...</p>
+
+    <!-- Map container -->
+    <div id="leaflet-map"></div>
+  </main>
 
   <script>
     function toggleMenu() {
@@ -109,6 +110,31 @@
         el.innerText = el.getAttribute(`data-${currentLang}`);
       });
     }
+
+    // Leaflet Map Initialization with EPSG:4326 Rectangle Bounds
+    const map = L.map('leaflet-map');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // 1. Define your vineyard bounding rectangle [ [SouthWest], [NorthEast] ]
+    const vineyardBounds = [
+      [43.444635, 5.831671], // South-West corner (Lat, Long)
+      [43.451005,5.844798]  // North-East corner (Lat, Long)
+    ];
+
+    // 2. Draw the rectangle
+    L.rectangle(vineyardBounds, {
+      color: "#2d5a27",      // Vineyard Green outline
+      weight: 2,
+      fillColor: "#6b1d2f",  // Bordeaux Red fill
+      fillOpacity: 0.25
+    }).addTo(map);
+
+    // 3. Automatically center and zoom the map to fit the rectangle bounds
+    map.fitBounds(vineyardBounds);
   </script>
 </body>
 </html>
