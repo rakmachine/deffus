@@ -93,14 +93,15 @@
     p { line-height: 1.6; margin-bottom: 1.5rem; }
 
     /* QGIS Map Iframe Styling */
-    .qgis-map-frame {
-      width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      margin-top: 1rem;
-    }
+  .qgis-map-frame {
+    width: 100%;
+    height: 75vh;          /* Sets height to 75% of the browser screen height */
+    min-height: 600px;     /* Ensures it never gets squished on mobile */
+    border: 1px solid #333333;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    margin-top: 1rem;
+  }
   </style>
 </head>
 <body>
@@ -149,9 +150,13 @@
       Ci-dessous un petit kiff de carto voilà je te propose une carte du vignoble avec l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! La légende est accessible si tu cliques en haut à droite sur les petits losanges. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te donne rdv là bas.
     </p>
 
-    <!-- YOUR QGIS2WEB MAP IFRAME GOES HERE -->
-    <iframe class="qgis-map-frame" src="https://rakmachine.github.io/deffus/map/index.html"></iframe>
-  </main>
+    <!-- YOUR QGIS CLOUD MAP IFRAME -->
+  <iframe 
+    class="qgis-map-frame" 
+    src="https://qgiscloud.com/rakmachine/Deffends/" 
+    allow="fullscreen"
+    title="bisous bisous smack">
+  </iframe>
 
   <script>
     function toggleMenu() {
