@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Der Deff... édition hallowe...</title>
+  <title>Der Deff... édition halloween 👻</title>
+
+  <!-- Google Font: Butcherman -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Butcherman&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bordeaux: #6b1d2f;
-      --bordeaux-dark: #4a1320;
-      --vine-green: #2d5a27;
-      --white: #ffffff;
-      --off-white: #f9f6f0;
-      --text-color: #333333;
+      --bordeaux: #1f1f1f;         /* Navigation bar */
+      --bordeaux-dark: #121212;    /* Dropdown menu background */
+      --vine-green: #3a3a3a;       /* Accent / Button background */
+      --accent-hover: #555555;     /* Button hover state */
+      --white: #ffffff;            /* Text color for buttons & nav */
+      --off-white: #181818;        /* Main dark background */
+      --text-color: #d1d1d1;       /* Body text color */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,17 +30,28 @@
       background-color: var(--bordeaux); color: var(--white);
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 1.5rem; z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      border-bottom: 1px solid #2a2a2a;
     }
 
-    .nav-brand a { color: var(--white); text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+    /* Logo link using Butcherman font */
+    .nav-brand a { 
+      color: var(--white); 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 1.1rem; 
+      font-family: 'Butcherman', cursive;
+      letter-spacing: 1px;
+    }
     .nav-actions { display: flex; align-items: center; gap: 1rem; }
 
     .lang-btn {
-      background: rgba(255, 255, 255, 0.2); border: 1px solid var(--white);
-      color: var(--white); padding: 0.2rem 0.6rem; border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15); border: 1px solid var(--white);
+      color: var(--white); padding: 0.3rem 0.7rem; border-radius: 4px;
       cursor: pointer; font-size: 0.85rem; font-weight: bold;
+      transition: background 0.2s ease;
     }
+    .lang-btn:hover { background: rgba(255, 255, 255, 0.3); }
 
     /* Top Right Hamburger Button */
     .hamburger {
@@ -47,33 +65,77 @@
       position: fixed; top: 60px; right: -100%; width: 250px;
       height: calc(100vh - 60px); background-color: var(--bordeaux-dark);
       display: flex; flex-direction: column; padding: 2rem 1.5rem; gap: 1.5rem;
-      transition: 0.3s ease; box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+      transition: 0.3s ease; box-shadow: -2px 0 10px rgba(0,0,0,0.5);
     }
     .nav-menu.active { right: 0; }
-    .nav-menu a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+    .nav-menu a { 
+      color: var(--white); 
+      text-decoration: none; 
+      font-size: 1.2rem; 
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover { color: #888888; }
 
-    /* Hero Background & Overlay */
+    /* Hero Background & Spooky Overlay */
     .hero {
       position: relative; height: 100vh;
-      background: linear-gradient(rgba(107, 29, 47, 0.55), rgba(0, 0, 0, 0.6)), 
+      background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(0, 0, 0, 0.85)), 
                   url('https://rakmachine.github.io/deffus/images/domaine-du-deffends-p2.jpg') center/cover no-repeat;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; color: var(--white); padding: 0 1rem;
+      text-align: center; color: var(--white); padding: 0 1.5rem;
     }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 700; }
-    .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; }
 
+    /* Main Title with Spooky Font */
+    .hero h1 { 
+      font-family: 'Butcherman', cursive;
+      font-size: 2.8rem; 
+      margin-bottom: 1rem; 
+      line-height: 1.2;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero p { 
+      font-size: 1.15rem; 
+      max-width: 650px; 
+      margin-bottom: 2.5rem; 
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    /* Form Action Button */
     .btn-main {
-      background-color: var(--vine-green); color: var(--white);
-      padding: 0.8rem 1.8rem; text-decoration: none; border-radius: 25px;
-      font-weight: bold; font-size: 1rem; display: inline-block;
+      background-color: var(--vine-green); 
+      color: var(--white);
+      padding: 0.9rem 2rem; 
+      text-decoration: none; 
+      border-radius: 30px;
+      font-weight: bold; 
+      font-size: 1rem; 
+      display: inline-block;
+      border: 1px solid #666;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-main:hover {
+      background-color: var(--accent-hover);
+      border-color: #888;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.1rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="nav-brand"><a href="index.html">Der Deff... édition Hallowe...</a></div>
+    <div class="nav-brand"><a href="index.html">Der Deff... édition halloween 👻</a></div>
     <div class="nav-actions">
       <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -91,9 +153,9 @@
   </nav>
 
   <header class="hero">
-    <h1 data-fr="Toutes les infos pour le wk ici yeah" data-en="All information about the weekend here">Toutes les infos ici yeah</h1>
+    <h1 data-fr="Toutes les infos pour le wk ici yeah" data-en="All information about the weekend here">Toutes les infos pour le wk ici yeah</h1>
     <p data-fr="Bon je me fais un peu chier au taf donc je me suis fait kiffer et j'ai appris à faire un mini site web lol c cadeau" data-en="So I'm a bit bored at work so I decided to learn how to host webpages on Github and I thought why not make a lil unnecessary effort for the weekend organization">Bon je me fais un peu chier au taf donc je me suis fait kiffer et j'ai appris à faire un mini site web lol c cadeau</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEPh5wIhdYvhx9yFw1-U19imRA-nf6CNa80fAPD5tFKFnXGg/viewform?usp=dialog" class="btn-main" data-fr="AVANT TOUT: remplis ce formulaire!!" data-en="BEFORE ANYTHING ELSE: fill in this form!!">AVANT TOUT: remplissez ce formulaire!!</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEPh5wIhdYvhx9yFw1-U19imRA-nf6CNa80fAPD5tFKFnXGg/viewform?usp=dialog" target="_blank" class="btn-main" data-fr="AVANT TOUT: remplis ce formulaire!!" data-en="BEFORE ANYTHING ELSE: fill in this form!!">AVANT TOUT: remplis ce formulaire!!</a>
   </header>
 
   <script>
