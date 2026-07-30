@@ -139,7 +139,7 @@
     /* Photo Grid Styling */
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -154,13 +154,20 @@
 
     .photo-card img {
       width: 100%;
-      height: 200px;
+      height: 300px;
       object-fit: cover;
       display: block;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .photo-card img:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
     }
 
     .photo-caption {
-      padding: 0.8rem 1rem;
+      padding: 1.2rem;
       font-size: 0.95rem;
       color: #e0e0e0;
       text-align: center;
@@ -187,6 +194,78 @@
       margin-top: 1rem;
       border: 1px solid #666;
     }
+
+    /* --- LIGHTBOX POPUP & ZOOM CSS --- */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-img-wrapper {
+      max-width: 90%;
+      max-height: 80vh;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+      border-radius: 6px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Zoomed state when clicked inside popup */
+    .lightbox-img.zoomed {
+      transform: scale(1.8);
+      cursor: zoom-out;
+    }
+
+    .lightbox-caption {
+      margin-top: 1.2rem;
+      color: #d1d1d1;
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      z-index: 2001;
+      transition: color 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      color: var(--vine-green);
+    }
   </style>
 </head>
 
@@ -212,8 +291,8 @@
 
   <main>
     <h1 data-fr="Photos" data-en="Photos">Photos</h1>
-    <p data-fr="Quelques photos pour bien capter les vibes du wk"
-      data-en="Some photos for you to really get the vibes of the wk">
+    <p data-fr="Quelques photos pour bien capter les vibes du wk mouahahaha"
+      data-en="Some photos for you to really get the vibes of the wk mouahahaha">
       Quelques photos pour bien capter les VIBES du wk
     </p>
 
@@ -221,73 +300,132 @@
     <div class="photo-grid">
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/portail.jpg" alt="Parking">
-        <div class="portail" data-fr="portail aka zepartiii" data-en="gate entrance aka letsgooo">portail aka zepartiii</div>
+        <div class="photo-caption" data-fr="portail aka zepartiii" data-en="gate entrance aka letsgooo">portail aka
+          zepartiii</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/entree.jpg" alt="Domaine">
-        <div class="entree" data-fr="continue tout droit pour accéder à la cave et au parking" data-en="Continue straight and arrive to the wine cellar and parking spots">continue tout droit pour accéder à la cave et au parking</div>
+        <div class="photo-caption" data-fr="continue tout droit pour accéder à la cave et au parking"
+          data-en="Continue straight and arrive to the wine cellar and parking spots">continue tout droit pour accéder à
+          la cave et au parking</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/drone4.jpg" alt="Domaine">
-        <div class="drone" data-fr="le bâtiment c la cave" data-en="that's the wine cellar">le bâtiment c la cave</div>
+        <div class="photo-caption" data-fr="le bâtiment c la cave" data-en="that's the wine cellar">le bâtiment c la
+          cave</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/vue_densemble.jpg" alt="Domaine">
-        <div class="entree" data-fr="espace parking et cave juste au-dessus" data-en="parking space and wine cellar right above">espace parking et cave juste au-dessus</div>
+        <div class="photo-caption" data-fr="espace parking et cave juste au-dessus"
+          data-en="parking space and wine cellar right above">espace parking et cave juste au-dessus</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/nuitsroses.jpg" alt="Domaine">
-        <div class="entree" data-fr="espace dehors pour chiller, fêter et manger au max" data-en="outdoor space for chilling/partying/eating optimization">espace dehors pour chiller et fêter et manger au max</div>
+        <div class="photo-caption" data-fr="espace dehors pour chiller, fêter et manger au max"
+          data-en="outdoor space for chilling/partying/eating optimization">espace dehors pour chiller et fêter et
+          manger au max</div>
       </div>
 
       <div class="photo-card">
-        <img src="https://rakmachine.github.io/deffus/images/nuitsroses_terasse2.jpg" alt="Domaine">
-        <div class="entree" data-fr="de nuit il y des jolies petites lumières" data-en="cozy little lights for evening vibes">de nuit il y des jolies petites lumières</div>
+        <img src="https://rakmachine.github.io/deffus/images/nuitsroses_terrasse2.jpg" alt="Domaine">
+        <div class="photo-caption" data-fr="de nuit il y des jolies petites lumières"
+          data-en="cozy little lights for evening vibes">de nuit il y des jolies petites lumières</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/magasin.jpg" alt="Domaine">
-        <div class="entree" data-fr="pour acheter du vin ouiouioui" data-en="for buying wine yesyesyes">pour acheter du vin ouiouioui</div>
+        <div class="photo-caption" data-fr="pour acheter du vin ouiouioui" data-en="for buying wine yesyesyes">pour
+          acheter du vin ouiouioui</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/campingcar.jpg" alt="Domaine">
-        <div class="entree" data-fr="espace dédié camping pour van et tentes" data-en="Dedicated camping space for vans and tents">espace dédié camping pour van et tentes</div>
+        <div class="photo-caption" data-fr="espace dédié camping pour van et tentes"
+          data-en="Dedicated camping space for vans and tents">espace dédié camping pour van et tentes</div>
       </div>
 
       <div class="photo-card">
         <img src="https://rakmachine.github.io/deffus/images/bouteilles_paille.jpg" alt="Domaine">
-        <div class="entree" data-fr="merci papa maman de nous offrir le vin pour le wk entier!!" data-en="Thank you papa maman for gifting the wine for the whole weekend!!">merci papa maman de nous offrir le vin pour le wk entier!!</div>
+        <div class="photo-caption" data-fr="merci papa maman de nous offrir le vin pour le wk entier!!"
+          data-en="Thank you papa maman for gifting the wine for the whole weekend!!">merci papa maman de nous offrir le
+          vin pour le wk entier!!</div>
       </div>
 
     </div>
 
-
-
     <!-- Google Photos Album Box -->
     <div class="album-box">
-      <p data-fr="album google photos pour partager toutes les photos post wk:"
-        data-en="google photos link for sharing all your photos post weekend">
-        album google photos pour partager toutes les photos post wk:
+      <p data-fr="Album google photos pour partager toutes les photos post wk:"
+        data-en="Google photos link for sharing all your photos post weekend">
+        Album google photos pour partager toutes les photos post wk:
       </p>
-      <a href="https://photos.app.goo.gl/wZPExTsUjnSmvdKP9" target="_blank" class="btn-main"
-        data-fr="cLICK MEEEE" data-en="cLICK MEEEE">📸 cLICK MEEEE
-        Photos</a>
+      <a href="https://photos.app.goo.gl/wZPExTsUjnSmvdKP9" target="_blank" class="btn-main" data-fr="cLICK MEEEE"
+        data-en="cLICK MEEEE">cLICK MEEEE</a>
     </div>
   </main>
 
+  <!-- POPUP LIGHTBOX HTML STRUCTURE -->
+  <div id="lightbox" class="lightbox-overlay">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-img-wrapper">
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Zoomed view">
+    </div>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
   <script>
-    function toggleMenu() {document.getElementById('nav-menu').classList.toggle('active');}
+    // Navigation & Translation Functions
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
     let currentLang = 'fr';
     function toggleLanguage() {
       currentLang = currentLang === 'fr' ? 'en' : 'fr';
       document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
-      document.querySelectorAll('[data-fr]').forEach(el => {el.innerHTML = el.getAttribute(`data-${currentLang}`);});
+      document.querySelectorAll('[data-fr]').forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
     }
+
+    // Lightbox Popup Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    // Attach click handlers to all photo grid images
+    document.querySelectorAll('.photo-card img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        // Copy caption text from neighboring caption div
+        const caption = img.nextElementSibling ? img.nextElementSibling.innerText : '';
+        lightboxCaption.innerText = caption;
+
+        lightbox.classList.add('active');
+        lightboxImg.classList.remove('zoomed'); // reset zoom scale
+      });
+    });
+
+    // Toggle zoom when clicking directly on the popup image
+    lightboxImg.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent modal from closing when clicking image
+      lightboxImg.classList.toggle('zoomed');
+    });
+
+    // Function to close popup
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.classList.remove('zoomed');
+    }
+
+    // Close lightbox on clicking background or 'X' button
+    lightbox.addEventListener('click', closeLightbox);
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Close on 'ESC' key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   </script>
 </body>
 
