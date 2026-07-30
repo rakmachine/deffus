@@ -135,22 +135,42 @@
       font-family: 'Germania One', display;
       color: var(--white);
       font-size: 2.2rem;
-      margin-top: 2rem;
-      margin-bottom: 0.8rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
       border-bottom: 2px solid var(--vine-green);
       padding-bottom: 0.3rem;
     }
 
+    h3 {
+      font-family: 'Germania One', display;
+      color: var(--white);
+      font-size: 1.6rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
     p {
       line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Indented Bullet List Styling */
+    ul {
+      margin-left: 2rem;
+      padding-left: 1rem;
       margin-bottom: 1.5rem;
+    }
+
+    li {
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
     }
 
     /* Timeline Container */
     .timeline {
       border-left: 2px solid var(--vine-green);
       padding-left: 1.5rem;
-      margin: 1.5rem 0;
+      margin: 1rem 0 2rem 0;
     }
 
     .timeline-item {
@@ -200,113 +220,127 @@
   <main>
     <h1 data-fr="Planning" data-en="Schedule">Planning</h1>
 
-    <!-- Subsection 1: Timeline -->
-    <h2 data-fr="Plan pour le weekend" data-en="Weekend plan">Plan pour le weekend</h2>
+    <!-- Section 1: Repas (First) -->
+    <h2 data-fr="Menu Repas" data-en="Meal Menu">Menu Repas</h2>
+    <p data-fr="Les petits déjeuners consisteront en pain + confiture et seront disponibles tous les matins. À part ça, trois repas sont organisés et chacun est préparé et débarrassé par un groupe différent :"
+      data-en="Breakfast will consist of bread + jam and will be available every morning. Apart from that, three meals are organized, each prepared and cleaned up by a different group:">
+      Les petits déjeuners consisteront en pain + confiture et seront disponibles tous les matins. À part ça, trois
+      repas sont organisés et chacun est préparé et débarrassé par un groupe différent :
+    </p>
+
+    <ul>
+      <li data-fr="Vendredi soir : paëlla de riz et légumes (végétarien et sans gluten !)"
+        data-en="Friday evening: rice & vegetable paella (vegetarian & gluten-free!)">
+        Vendredi soir : paëlla de riz et légumes (végétarien et sans gluten !)
+      </li>
+      <li data-fr="Samedi soir : méchoui et salade de pâtes (option sans gluten pour les pâtes disponible. Salade de pâtes végétarienne. Méchoui évidemment PAS végétarien mais trop miam quand même)"
+        data-en="Saturday evening: Méchoui & pasta salad (gluten-free pasta option available. Vegetarian pasta salad. Méchoui obviously NOT vegetarian but super yummy anyway)">
+        Samedi soir : méchoui et salade de pâtes (option sans gluten pour les pâtes disponible. Salade de pâtes
+        végétarienne. Méchoui évidemment PAS végétarien mais trop miam quand même)
+      </li>
+      <li data-fr="Dimanche midi : déjeuner paëlla de riz et légumes (donc aussi végétarien et sans gluten)."
+        data-en="Sunday lunch: rice & vegetable paella (so also vegetarian & gluten-free).">
+        Dimanche midi : déjeuner paëlla de riz et légumes (donc aussi végétarien et sans gluten).
+      </li>
+    </ul>
+
+    <p data-fr="Le repas du samedi midi n'est donc PAS inclus et ce sera à toi d'apporter qqch ou descendre en ville !"
+      data-en="Saturday lunch is NOT included, so you'll need to bring something or head into town!">
+      Le repas du samedi midi n'est donc PAS inclus et ce sera à toi d'apporter qqch ou descendre en ville !
+    </p>
+
+    <!-- Section 2: Timeline (Second, separated by day) -->
+    <h2 data-fr="Plan pour le weekend" data-en="Weekend Schedule">Plan pour le weekend</h2>
+
+    <!-- Vendredi -->
+    <h3 data-fr="Vendredi" data-en="Friday">Vendredi</h3>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Vendredi - 16h00" data-en="Friday - 4:00 PM">Vendredi - 16h00</div>
+        <div class="timeline-time" data-fr="16h00" data-en="4:00 PM">16h00</div>
         <p data-fr="Arrivée pour celleux qui arrivent le vendredi + installation."
-          data-en="Guest arrival those arriving on Friday and installation.">
+          data-en="Guest arrival for those arriving on Friday + settling in.">
           Arrivée pour celleux qui arrivent le vendredi + installation.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Vendredi - 18h00" data-en="Friday - 6:00 PM">Vendredi - 18h00</div>
+        <div class="timeline-time" data-fr="18h00" data-en="6:00 PM">18h00</div>
         <p data-fr="Groupe 1 prépare la paëlla." data-en="Group 1 prepares the paella.">
           Groupe 1 prépare la paëlla.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Vendredi - 20h00" data-en="Friday - 8:00 PM">Vendredi - 20h00</div>
-        <p data-fr="Repas. Groupe 2 néttoie/range." data-en="Dinner">
-          Repas</p>
+        <div class="timeline-time" data-fr="20h00" data-en="8:00 PM">20h00</div>
+        <p data-fr="Repas. Groupe 2 nettoie/range." data-en="Dinner. Group 2 cleans up.">
+          Repas. Groupe 2 nettoie/range.</p>
       </div>
+    </div>
 
+    <!-- Samedi -->
+    <h3 data-fr="Samedi" data-en="Saturday">Samedi</h3>
+    <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Samedi - jusque dans l'aprem" data-en="Saturday - until afternoon">Samedi -
-          jusque dans l'aprem</div>
+        <div class="timeline-time" data-fr="Jusque dans l'après-midi" data-en="Until the afternoon">Jusque dans l'après-midi</div>
         <p data-fr="Temps libre fais ce que tu veux. Déjeuner PAS compris. Arrivée pour celleux qui arrivent le samedi + installation."
-          data-en="Free time do what you want. Lunch is NOT included. Guest arrival those arriving on Saturday and installation.">
-          Temps libre fais ce que tu veux. Déjeuner PAS compris. Arrivée pour celleux qui arrivent le samedi +
-          installation.</p>
+          data-en="Free time do what you want. Lunch is NOT included. Guest arrival for those arriving on Saturday + settling in.">
+          Temps libre fais ce que tu veux. Déjeuner PAS compris. Arrivée pour celleux qui arrivent le samedi + installation.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Samedi - 13h00" data-en="Saturday - 1:00 PM">Samedi - 13h00</div>
+        <div class="timeline-time" data-fr="13h00" data-en="1:00 PM">13h00</div>
         <p data-fr="Groupe 3 prépare la salade de pâtes pour le dîner."
           data-en="Group 3 prepares the pasta salad for dinner.">
           Groupe 3 prépare la salade de pâtes pour le dîner.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Samedi - 15h00" data-en="Saturday - 2:00 PM">Samedi - 15h00</div>
-        <p data-fr="Activité surprise!!!" data-en="Surprise activity!!!">
-          Activité surprise!!!</p>
+        <div class="timeline-time" data-fr="15h00" data-en="3:00 PM">15h00</div>
+        <p data-fr="Activité surprise !!!" data-en="Surprise activity !!!">
+          Activité surprise !!!</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Samedi - 19h00" data-en="Saturday - 7:00 PM">Samedi - 19h00</div>
-        <p data-fr="Tu as une heure pour mettre ton costume!!!" data-en="You have an hour to put on your costume!!!">
-          Tu as une heure pour mettre ton costume!!!</p>
+        <div class="timeline-time" data-fr="19h00" data-en="7:00 PM">19h00</div>
+        <p data-fr="Tu as une heure pour mettre ton costume !!!" data-en="You have an hour to put on your costume !!!">
+          Tu as une heure pour mettre ton costume !!!</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Samedi - 20h00" data-en="Saturday - 8:00 PM">Samedi - 20h00</div>
-        <p data-fr="Remise des prix. Repas. Groupe 4 rangement/nettoyage du repas. Soirée!!!"
-          data-en="Award ceremony. Dinner. Group 4 cleans up meal. Party!!!">
+        <div class="timeline-time" data-fr="20h00" data-en="8:00 PM">20h00</div>
+        <p data-fr="Remise des prix. Repas. Groupe 4 rangement/nettoyage de la Soirée."
+          data-en="Award ceremony. Dinner. Group 4 cleans up after the party.">
           Remise des prix. Repas. Groupe 4 rangement/nettoyage de la Soirée.</p>
       </div>
+    </div>
 
+    <!-- Dimanche -->
+    <h3 data-fr="Dimanche" data-en="Sunday">Dimanche</h3>
+    <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Dimanche - 10h00" data-en="Sunday - 10:00 AM">Dimanche - 10h00</div>
-        <p data-fr="Petit dej oklm. Chaqun.e repart à son rythme."
-          data-en="Brekkie time - then you can head back home at your own pace.">
-          Petit dej oklm. Chaqun.e repart à son rythme.</p>
+        <div class="timeline-time" data-fr="10h00" data-en="10:00 AM">10h00</div>
+        <p data-fr="Petit dej oklm. Chacun.e repart à son rythme."
+          data-en="Relaxed breakfast. Everyone heads home at their own pace.">
+          Petit dej oklm. Chacun.e repart à son rythme.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Dimanche - 12h00" data-en="Sunday - 12:00 PM">Dimanche - 12h00</div>
-        <p data-fr="Groupe 5 prépare le déjeuner paëlla." data-en="Group 5 prepares the paella for lunch.">
+        <div class="timeline-time" data-fr="12h00" data-en="12:00 PM">12h00</div>
+        <p data-fr="Groupe 5 prépare le déjeuner paëlla." data-en="Group 5 prepares the paella lunch.">
           Groupe 5 prépare le déjeuner paëlla.</p>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time" data-fr="Dimanche - 14h00" data-en="Sunday - 2:00 PM">Dimanche - 14h00</div>
+        <div class="timeline-time" data-fr="14h00" data-en="2:00 PM">14h00</div>
         <p data-fr="Repas pour ceux qui sont encore là. Groupe 6 rangement."
-          data-en="Dinner for those who are still here. Group 6 cleans up.">
+          data-en="Lunch for those who are still here. Group 6 cleans up.">
           Repas pour ceux qui sont encore là. Groupe 6 rangement.</p>
       </div>
-
     </div>
 
-    <!-- Subsection 2: Repas -->
-    <h2 data-fr="Menu Repas" data-en="Meal Menu">Menu Repas</h2>
-    <p data-fr="Les petits déjeuners consisteront en pain + confiture et seront disponibles tous les matins. A part ça, trois repas sont organisés et chaqun est préparé et débarassé par un groupe différent. <ul>
-  <li>Vendredi soir: päella de riz et légumes (végétarien et sans gluten!)</li>
-  <li>Samedi soir: méchoui et salade de pâtes (option sans gluten pour les pâtes disponible. Salade de pâtes végétarienne. Méchoui évidemment PAS végétarien mais trop miam quand même)</li>
-  <li>Dimanche matin: déjeuner paëlla de riz et légumes donc aussi végétarien et sans gluten.</li>
-</ul> Le repas du samedi midi n'est donc PAS inclu et ce sera à toi d'apporter qqch ou descendre en ville ou qqch."
-      data-en="Three meals are organized during the weekend. Each meal is prepared and cleaned up by a different group. <ul>
-  <li>Friday evening: paella with rice and vegetables (vegetarian and gluten-free!)</li>
-  <li>Saturday evening: Méchoui and pasta salad (gluten-free option for the pasta available - fill in the form. Vegetarian pasta salad. Méchoui obviously NOT vegetarian but still super yummy)</li>
-  <li>Sunday morning: paella with rice and vegetables, so also vegetarian and gluten-free.</li>
-</ul>">
-      Les petits déjeuners consisteront en pain + confiture et seront disponibles tous les matins. A part ça, trois
-      repas sont organisés et chaqun est préparé et débarassé par un groupe différent.
-    <ul>
-      <li>Vendredi soir: päella de riz et légumes (végétarien et sans gluten!)</li>
-      <li>Samedi soir: méchoui et salade de pâtes (option sans gluten pour les pâtes disponible. Salade
-        de pâtes végétarienne. Méchoui évidemment PAS végétarien mais trop miam quand même)</li>
-      <li>Dimanche matin: déjeuner paëlla de riz et légumes donc aussi végétarien et sans gluten.</li>
-    </ul>
-    Le repas du samedi midi n'est donc PAS inclu et ce sera à toi d'apporter qqch ou descendre en ville ou qqch."
-    </p>
-
-    <!-- Subsection 3: Activité -->
-    <h2 data-fr="Activité surprise ihih" data-en="Surprise Activity ihih">Activité surprise</h2>
-    <p data-fr="Le samedi à 15h00 on se réunira à la cave et je vous expliquerqi tout!!! Gros bisous"
-      data-en="Saturday at 3:00 PM we will meet outside the wine cellar and I will explain everything!!! Big kisses">
-      Le samedi à 15h00 on se réunira à la cave et je vous expliquerqi tout!!! Gros bisous
+    <!-- Section 3: Activité -->
+    <h2 data-fr="Activité surprise ihih" data-en="Surprise Activity ihih">Activité surprise ihih</h2>
+    <p data-fr="Le samedi à 15h00 on se réunira à la cave et je vous expliquerai tout !!! Gros bisous"
+      data-en="Saturday at 3:00 PM we will meet outside the wine cellar and I will explain everything !!! Big kisses">
+      Le samedi à 15h00 on se réunira à la cave et je vous expliquerai tout !!! Gros bisous
     </p>
   </main>
 
