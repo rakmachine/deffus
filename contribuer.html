@@ -48,6 +48,20 @@
       border-bottom: 1px solid #2a2a2a;
     }
 
+    .photo-card img {
+      max-width: 200px;
+      /* Adjust this pixel value to whatever size you prefer */
+      width: 100%;
+      /* Keeps it responsive on smaller mobile screens */
+      height: auto;
+      /* Preserves the image aspect ratio */
+      display: block;
+      margin: 1rem auto;
+      /* Centers the image and adds vertical spacing */
+      border-radius: 8px;
+      /* Optional: rounds the corners slightly */
+    }
+
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
@@ -158,6 +172,47 @@
       margin: 0.5rem 0 1.5rem 0;
       border: 1px solid #666;
     }
+
+    .content-wrapper {
+      display: flex;
+      align-items: flex-start;
+      /* Aligns image and text at the top */
+      gap: 2rem;
+      /* Space between the photo and the text */
+      margin-top: 1rem;
+    }
+
+    .photo-card {
+      flex-shrink: 0;
+      /* Keeps the image column from squeezing */
+      width: 220px;
+      /* Width of the photo column */
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .text-card {
+      flex: 1;
+      /* Allows the text to fill the remaining width */
+    }
+
+    /* Mobile responsive layout */
+    @media (max-width: 650px) {
+      .content-wrapper {
+        flex-direction: column;
+        /* Stacks image on top of text on phones */
+      }
+
+      .photo-card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
   </style>
 </head>
 
@@ -186,15 +241,24 @@
 
     <!-- 1. Cagnotte ouverte -->
     <h2 data-fr="Coûts du weekend" data-en="Weekend costs">Coûts du weekend</h2>
-    <p data-fr="Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...) via la cagnotte ouverte ci-dessous. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le monde n'a pas les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé au domaine."
-      data-en="The weekend will cost me a bit of money, so if you could contribute to the costs (meals, sound equipment, decorations...) that would be super helpful! Below is a link to an open wallet where you can contribute as much money as you want - I know not everyone has the same means. If by chance I manage to collect more than the expenses, the surplus will be donated to der deffus.">
-      Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...) via
-      la cagnotte ouverte ci-dessous. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le monde n'a
-      pas les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé au domaine.
-    </p>
 
-    <a href="https://revolut.me/mdelanversin" target="_blank" class="btn-main" data-fr="cagnotte ouverte"
-      data-en="open wallet">lien cagnotte</a>
+    <div class="content-wrapper">
+      <div class="photo-card">
+        <img src="https://rakmachine.github.io/deffus/images/verre.JPG" alt="verre">
+      </div>
+
+      <div class="text-card">
+        <p data-fr="Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...) via la cagnotte ouverte ci-dessous. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le monde n'a pas les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé au domaine."
+          data-en="The weekend will cost me a bit of money, so if you could contribute to the costs (meals, sound equipment, decorations...) that would be super helpful! Below is a link to an open wallet where you can contribute as much money as you want - I know not everyone has the same means. If by chance I manage to collect more than the expenses, the surplus will be donated to der deffus.">
+          Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...)
+          via la cagnotte ouverte ci-dessous. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le
+          monde n'a pas les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé
+          au domaine.
+        </p>
+        <a href="https://revolut.me/mdelanversin" target="_blank" class="btn-main" data-fr="cagnotte ouverte"
+          data-en="open wallet">lien cagnotte</a>
+      </div>
+    </div>
 
     <!-- 2. Acheter du vin -->
     <h2 data-fr="Acheter du vin" data-en="Buy wine">Acheter du vin</h2>
