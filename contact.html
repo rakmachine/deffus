@@ -176,36 +176,57 @@
 
   <main>
     <h1 data-fr="Contact" data-en="Contact">Contact</h1>
-    <p data-fr="Une question urgente ou besoin de nous joindre durant le week-end ?"
-      data-en="An urgent question or need to reach us during the weekend?">
-      Une question urgente ou besoin de nous joindre durant le week-end ?
+    <p data-fr="Pour les questions et les urgences sur place:" data-en="For questions and emergencies on site:">
+      Pour les questions et les urgences sur place:
     </p>
 
     <!-- Contact Box 1 -->
     <div class="contact-card">
-      <h3 data-fr="Organisateur" data-en="Organizer">Organisateur</h3>
-      <p data-fr="Téléphone : 06 XX XX XX XX<br>Email : contact@example.com"
-        data-en="Phone: +33 6 XX XX XX XX<br>Email: contact@example.com">
-        Téléphone : 06 XX XX XX XX<br>Email : contact@example.com
+      <h3 data-fr="Oim (orga arrivées questions et urgences)"
+        data-en="Me (organization arrivals questions and emergencies)">Oim (orga arrivées questions et urgences)</h3>
+      <p data-fr="Téléphone : +34 672 93 60 47" data-en="Phone: +34 672 93 60 47">
+        Téléphone : +34 672 93 60 47<br>
       </p>
     </div>
 
     <!-- Contact Box 2 -->
     <div class="contact-card">
-      <h3 data-fr="Contact Domaine / Urgences" data-en="Venue / Emergency Contact">Contact Domaine / Urgences</h3>
-      <p data-fr="Informations utiles pour les cas d'urgence..." data-en="Useful information for emergencies...">
-        Informations utiles pour les cas d'urgence...
+      <h3 data-fr="Rita (urgences sur place)" data-en="Rita (On-site Emergencies)">Rita (urgences sur place)</h3>
+      <p data-fr="Téléphone : +34 672 93 60 47" data-en="Phone: +34 672 93 60 47">
+        Téléphone : +34 672 93 60 47<br>
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3 data-fr="Carl (pick up bus Janetti)" data-en="Carl (Bus Pick-up Janetti)">Carl (pick up bus Janetti)</h3>
+      <p data-fr="Téléphone : +33 6 41 08 64 41" data-en="Phone: +33 6 41 08 64 41">
+        Téléphone : +33 6 41 08 64 41<br>
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3 data-fr="Tilman (pick up bus Janetti)" data-en="Tilman (Bus Pick-up Janetti)">Tilman (pick up bus Janetti)
+      </h3>
+      <p data-fr="Téléphone : +41 79 866 99 49" data-en="Phone: +41 79 866 99 49">
+        Téléphone : +41 79 866 99 49<br>
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3 data-fr="Acheter du vin der deffus" data-en="Buying wine by phone">Acheter du vin der deffus</h3>
+      <p data-fr="Téléphone : +33 4 94 78 03 91" data-en="Phone: +33 4 94 78 03 91">
+        Téléphone : +33 4 94 78 03 91<br>
       </p>
     </div>
   </main>
 
   <script>
-    function toggleMenu() {document.getElementById('nav-menu').classList.toggle('active');}
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
     let currentLang = 'fr';
     function toggleLanguage() {
       currentLang = currentLang === 'fr' ? 'en' : 'fr';
       document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
-      document.querySelectorAll('[data-fr]').forEach(el => {el.innerHTML = el.getAttribute(`data-${currentLang}`);});
+      document.querySelectorAll('[data-fr]').forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
     }
   </script>
 </body>

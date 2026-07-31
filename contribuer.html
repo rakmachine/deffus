@@ -185,31 +185,38 @@
     <h1 data-fr="Contribuer" data-en="Contribute">Contribuer</h1>
 
     <!-- 1. Cagnotte ouverte -->
-    <h2 data-fr="Cagnotte Ouverte" data-en="Open Fund">Cagnotte Ouverte</h2>
-    <p data-fr="Explications pour la cagnotte d'anniversaire..."
-      data-en="Details about the birthday pool / gift fund...">
-      Explications pour la cagnotte d'anniversaire...
+    <h2 data-fr="Cagnotte Ouverte" data-en="Open Wallet">Cagnotte Ouverte</h2>
+    <p data-fr="Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...) via cette cagnotte ouverte : LIEN. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le monde n'a pas les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé au domaine."
+      data-en="The weekend will cost me a bit of money, so if you could contribute to the costs (meals, sound equipment, decorations...) that would be super helpful! Here is a link to an open wallet where you can contribute as much money as you want - I know not everyone has the same means. If by chance I manage to collect more than the expenses, the surplus will be donated to der deffus.">
+      Le weekend me coûtera un peu de sous donc je vous propose de contribuer aux coûts (repas, matos son, déco...) via
+      cette cagnotte ouverte : LIEN. Vous pouvez mettre autant d'argent que vous voulez, je sais que tout le monde n'a
+      pas
+      les mêmes moyens. Si par chance j'arrive à collecter + que les dépenses, le surplus sera versé au domaine
     </p>
 
     <!-- 2. Acheter du vin -->
-    <h2 data-fr="Acheter du Vin du Domaine" data-en="Buy Estate Wine">Acheter du Vin du Domaine</h2>
-    <p data-fr="Si vous souhaitez commander des bouteilles du domaine du Défends, vous pouvez passer par la boutique en ligne ici :"
-      data-en="If you would like to order bottles from Domaine du Défends, you can visit the online store here:">
-      Si vous souhaitez commander des bouteilles du domaine du Défends, vous pouvez passer par la boutique en ligne ici
-      :
+    <h2 data-fr="Acheter du Vin" data-en="Buy Wine">Acheter du Vin du Domaine</h2>
+    <p data-fr="Si tu veux me faire un cadeau d'anniversaire je ne demande qu'une chose.... ACHÈTE DU VIN!! Et si toi t'en veux pas, demande à tes parents, tes oncles et tantes, tes amis, ta grand-mère qui a trop d'argent et ne sais pas où le mettre, tes voisins..... on en a besoin, vraiment &lt;3 Le magasin sera ouvert samedi 10:00-12:00 et 15:00-18:00, et dimanche après le déjeuner avant que vous partiez. Si tu veux commander des bouteilles pour envoi à domicile, tu peux aller sur la boutique en ligne ici :"
+      data-en="If you want to give me a birthday present I only ask for one thing.... BUY WINE!! And if you don't want any, ask your parents, uncles and aunts, friends, grandma who has too much money, your neighbors..... we really need it &lt;3 The shop will be open Saturday 10:00-12:00 and 15:00-18:00, and Sunday after lunch. If you would like to order bottles to be delivered at home directly, you can visit the online store here:">
+      Si tu veux me faire un cadeau d'anniversaire je ne demande qu'une chose.... ACHÈTE DU VIN!! Et si toi t'en veux
+      pas, demande à tes parents, tes oncles et tantes, tes amis, ta grand-mère qui a trop d'argent et ne sais pas où le
+      mettre, tes voisins..... on en a besoin, vraiment &lt;3 Le magasin sera ouvert samedi 10:00-12:00 et 15:00-18:00,
+      et dimanche après le déjeuner avant que vous partiez. Si tu veux commander des bouteilles pour envoi à domicile,
+      tu peux aller sur la
+      boutique en ligne ici :
     </p>
 
-    <a href="https://deffends.plugwine.com/" target="_blank" class="btn-main" data-fr="🍷 Visiter la boutique en ligne"
-      data-en="🍷 Visit the Online Webshop">🍷 Visiter la boutique en ligne</a>
+    <a href="https://deffends.plugwine.com/" target="_blank" class="btn-main" data-fr="achète beaucoup de vin ouioui"
+      data-en="buy loooots of wine yesyes">achète beaucoup de vin ouioui</a>
   </main>
 
   <script>
-    function toggleMenu() {document.getElementById('nav-menu').classList.toggle('active');}
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
     let currentLang = 'fr';
     function toggleLanguage() {
       currentLang = currentLang === 'fr' ? 'en' : 'fr';
       document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
-      document.querySelectorAll('[data-fr]').forEach(el => {el.innerHTML = el.getAttribute(`data-${currentLang}`);});
+      document.querySelectorAll('[data-fr]').forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
     }
   </script>
 </body>
