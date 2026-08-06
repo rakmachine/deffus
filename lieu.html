@@ -1,64 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lieu et accès, tout ce qu'il faut savoir</title>
-  
+
   <!-- Google Font: Jersey 10 Charted -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
-      --bordeaux: #1f1f1f;         /* Barre de navigation & titres principaux */
-      --bordeaux-dark: #121212;    /* Fond du menu déroulant mobile */
-      --vine-green: #5a5a5a;       /* Lignes de séparation & accents */
-      --white: #ffffff;            /* Texte des boutons & navigation */
-      --off-white: #181818;        /* Fond général de la page (noir brumeux) */
-      --text-color: #d1d1d1;       /* Couleur du texte principal (gris clair) */
+      --bordeaux: #1f1f1f;
+      /* Barre de navigation & titres principaux */
+      --bordeaux-dark: #121212;
+      /* Fond du menu déroulant mobile */
+      --vine-green: #5a5a5a;
+      /* Lignes de séparation & accents */
+      --white: #ffffff;
+      /* Texte des boutons & navigation */
+      --off-white: #181818;
+      /* Fond général de la page (noir brumeux) */
+      --text-color: #d1d1d1;
+      /* Couleur du texte principal (gris clair) */
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-color); background-color: var(--off-white); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-color);
+      background-color: var(--off-white);
+    }
 
     nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background-color: var(--bordeaux); color: var(--white);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 1.5rem; z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--bordeaux);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     /* Applied Jersey 10 Charted to top logo link */
-    .nav-brand a { 
-    color: var(--white); 
-    text-decoration: none; 
-    font-weight: normal; 
-    font-size: 1.2rem; 
-    font-family: 'Germania One', cursive;
-    letter-spacing: 1px;
-  }
-    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-brand a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 1.2rem;
+      font-family: 'Germania One', cursive;
+      letter-spacing: 1px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
     .lang-btn {
-      background: rgba(255, 255, 255, 0.2); border: 1px solid var(--white);
-      color: var(--white); padding: 0.2rem 0.6rem; border-radius: 4px;
-      cursor: pointer; font-size: 0.85rem; font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--white);
+      color: var(--white);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
     }
 
-    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { width: 25px; height: 3px; background-color: var(--white); border-radius: 2px; }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      border-radius: 2px;
+    }
 
     .nav-menu {
-      position: fixed; top: 60px; right: -100%; width: 250px;
-      height: calc(100vh - 60px); background-color: var(--bordeaux-dark);
-      display: flex; flex-direction: column; padding: 2rem 1.5rem; gap: 1.5rem;
-      transition: 0.3s ease; box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 60px;
+      right: -100%;
+      width: 250px;
+      height: calc(100vh - 60px);
+      background-color: var(--bordeaux-dark);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+      transition: 0.3s ease;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     }
-    .nav-menu.active { right: 0; }
-    .nav-menu a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+
+    .nav-menu.active {
+      right: 0;
+    }
+
+    .nav-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
 
     /* Page Content */
     main {
@@ -68,42 +131,48 @@
     }
 
     /* Applied Jersey 10 Charted to Main H1 Title */
-    h1 { 
+    h1 {
       font-family: 'Germania One', display;
-      color: var(--white); 
-      font-size: 3rem; 
-      margin-bottom: 1rem; 
-      border-bottom: 2px solid var(--vine-green); 
-      padding-bottom: 0.5rem; 
+      color: var(--white);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--vine-green);
+      padding-bottom: 0.5rem;
       letter-spacing: 1px;
     }
 
     /* Applied Jersey 10 Charted to H2 Subtitles */
-    h2 { 
+    h2 {
       font-family: 'Germania One', display;
-      color: var(--white); 
-      font-size: 2.2rem; 
+      color: var(--white);
+      font-size: 2.2rem;
       margin-top: 2rem;
-      margin-bottom: 0.8rem; 
-      border-bottom: 2px solid var(--vine-green); 
-      padding-bottom: 0.3rem; 
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid var(--vine-green);
+      padding-bottom: 0.3rem;
       letter-spacing: 1px;
     }
 
-    p { line-height: 1.6; margin-bottom: 1.5rem; }
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
 
     /* QGIS Map Iframe Styling */
     .qgis-map-frame {
       width: 100%;
-      height: 75vh;          /* Sets height to 75% of the browser screen height */
-      min-height: 600px;     /* Ensures it never gets squished on mobile */
+      height: 75vh;
+      /* Sets height to 75% of the browser screen height */
+      min-height: 600px;
+      /* Ensures it never gets squished on mobile */
       border: 1px solid #333333;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       margin-top: 1rem;
     }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -126,35 +195,57 @@
 
   <main>
     <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
-    <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... " data-en="Der Deffus welcomes you with open arms - but be careful not to get lost...">Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...</p>
+    <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... "
+      data-en="Der Deffus welcomes you with open arms - but be careful not to get lost...">Der Deffus vous accueille à
+      bras ouverts - mais attention, ne vous perdez pas...</p>
 
     <!-- 1st Subtitle & Text -->
     <h2 data-fr="Accès et Transport" data-en="Access & Transport">Accès et Transport</h2>
-    
-    <p data-fr="L&apos;adresse est 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume mais sinon tu peux juste voir la loc sur google maps directement <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>ici.</a> Pour ceux qui arriveront en transports publics l&apos;arrêt de bus où on viendra vous chercher s&apos;appelle Lycée Janetti, <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>ici le lien.</a> Les fiches d&apos;horaires de bus sont accessibles <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a> pour les gens qui arrivent depuis Aix-en-Provence TGV, et <a href='https://itineraires-zou.maregionsud.fr/fr/horaires/Zou-!-Express/Bus/ligne/94/direction/RETURN/14573#' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a> pour ceux qui arrivent depuis Marseille St Charles. N&apos;oublie pas de remplir le formulaire sur la page d&apos;accueil si tu veux être cherché.e à l&apos;arrêt de bus!" 
-       data-en="The exact adress is 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume but you can also just <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>click here</a> and get the google maps loc directly. For those of you taking public transport the bus stop we are going to be picking you up at is called Lycée Janetti, <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>here is the link.</a> The bus timetables are <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>here</a> for those coming from Aix-en-Provence TGV, and <a href='https://itineraires-zou.maregionsud.fr/fr/horaires/Zou-!-Express/Bus/ligne/94/direction/RETURN/14573#' target='_blank' style='color: var(--white); font-weight: bold;'>here</a> for those coming from Marseille St Charles. For those concerned, don&apos;t forget to fill in the google forms linked in the main page of this site so that I can count you in the schedule for picking up people at the bus stop."> 
-      L&apos;adresse est 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume mais sinon tu peux juste voir la loc sur google maps directement <a href="https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr" target="_blank" style="color: var(--white); font-weight: bold;">ici.</a> Pour ceux qui arriveront en transports publics l&apos;arrêt de bus où on viendra vous chercher s&apos;appelle Lycée Janetti, <a href="https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7" target="_blank" style="color: var(--white); font-weight: bold;">ici le lien.</a> Les fiches d&apos;horaires de bus sont accessibles <a href="https://zou.maregionsud.fr/" target="_blank" style="color: var(--white); font-weight: bold;">ici</a> pour les gens qui arrivent depuis Aix-en-Provence TGV, et <a href="https://itineraires-zou.maregionsud.fr/fr/horaires/Zou-!-Express/Bus/ligne/94/direction/RETURN/14573#" target="_blank" style="color: var(--white); font-weight: bold;">ici</a> pour ceux qui arrivent depuis Marseille St Charles. N&apos;oublie pas de remplir le formulaire sur la page d&apos;accueil si tu veux être cherché.e à l&apos;arrêt de bus!
+
+    <p data-fr="L&apos;adresse est 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume mais sinon tu peux juste voir la loc sur google maps directement <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>ici.</a> Pour ceux qui arriveront en transports publics l&apos;arrêt de bus où on viendra vous chercher s&apos;appelle Lycée Janetti, <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>ici le lien.</a> Les fiches d&apos;horaires de bus sont accessibles <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a> pour les gens qui arrivent depuis Aix-en-Provence TGV, et <a href='Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a> pour ceux qui arrivent depuis Marseille St Charles. N&apos;oublie pas de remplir le formulaire sur la page d&apos;accueil si tu veux être cherché.e à l&apos;arrêt de bus!"
+      data-en="The exact adress is 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume but you can also just <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>click here</a> and get the google maps loc directly. For those of you taking public transport the bus stop we are going to be picking you up at is called Lycée Janetti, <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>here is the link.</a> The bus timetables are <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>here</a> for those coming from Aix-en-Provence TGV, and <a href='Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>here</a> for those coming from Marseille St Charles. For those concerned, don&apos;t forget to fill in the google forms linked in the main page of this site so that I can count you in the schedule for picking up people at the bus stop.">
+      L&apos;adresse est 2020 Chemin du Défends 83470 Saint-Maximin-la-Sainte-Baume mais sinon tu peux juste voir la loc
+      sur google maps directement <a
+        href="https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr"
+        target="_blank" style="color: var(--white); font-weight: bold;">ici.</a> Pour ceux qui arriveront en transports
+      publics l&apos;arrêt de bus où on viendra vous chercher s&apos;appelle Lycée Janetti, <a
+        href="https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7" target="_blank"
+        style="color: var(--white); font-weight: bold;">ici le lien.</a> Les fiches d&apos;horaires de bus sont
+      accessibles <a href="https://zou.maregionsud.fr/" target="_blank"
+        style="color: var(--white); font-weight: bold;">ici</a> pour les gens qui arrivent depuis Aix-en-Provence TGV,
+      et <a href="Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf" target="_blank"
+        style="color: var(--white); font-weight: bold;">ici</a> pour ceux qui arrivent depuis Marseille St Charles.
+      N&apos;oublie pas de remplir le formulaire sur la page d&apos;accueil si tu veux être cherché.e à l&apos;arrêt de
+      bus!
     </p>
 
     <!-- 2nd Subtitle & Text -->
     <h2 data-fr="Parking et Arrivée" data-en="Parking & Arrival">Parking et Arrivée</h2>
-    <p data-fr="Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est défini sur la carte ci-dessous. Si tu es en camping car ou van, suis les panneaux ou regarde la carte (zone orange), c&apos;est un peu plus loin que le parking." 
-       data-en="Once you have passed the gate, follow the sign that says CAVE until you reach the wine cellar which will be where we hold meals and party. You&apos;ll see there is parking space along the vines there, and if you&apos;re coming with a camping car or van there&apos;s also a sign you can follow with the spots you can take. Check the map I made for the exact location of the parking and camping space and the access route.">
-      Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est délimité dans la carte que j&apos;ai faite ci-dessous. Si vous êtes en camping car ou van vous pouvez suivre les panneaux ou regarder la carte aussi, c&apos;est un peu plus loin que le parking.
+    <p data-fr="Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est défini sur la carte ci-dessous. Si tu es en camping car ou van, suis les panneaux ou regarde la carte (zone orange), c&apos;est un peu plus loin que le parking."
+      data-en="Once you have passed the gate, follow the sign that says CAVE until you reach the wine cellar which will be where we hold meals and party. You&apos;ll see there is parking space along the vines there, and if you&apos;re coming with a camping car or van there&apos;s also a sign you can follow with the spots you can take. Check the map I made for the exact location of the parking and camping space and the access route.">
+      Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on
+      mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la
+      cave. L&apos;espace dédié aux voitures est délimité dans la carte que j&apos;ai faite ci-dessous. Si vous êtes en
+      camping car ou van vous pouvez suivre les panneaux ou regarder la carte aussi, c&apos;est un peu plus loin que le
+      parking.
     </p>
 
     <!-- 3rd Subtitle right above the map -->
-    <h2 data-fr="Carte" data-en="Map">Carte</h2>
-    <p data-fr="Ci-dessous un petit kiff de carto voilà je te propose une carte du vignoble avec l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! La légende est accessible si tu cliques en haut à droite sur les petits losanges. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te donne rdv là bas." 
-       data-en="I nerded out and made a lil map of the vineyard so you can see where you&apos;re allowed to park, camp, where we&apos;ll be eating and partying, where to pee, shower.... Have a good look at it and please respect the areas as much as possible. The legend of the map is accessible if you click on the little diamonds on the top right part of the map. The names like BASTIDON, MAZET, CABANON and CAVE are the names we use to talk about the houses so remember them in case we need to meet up there at some point.">
-      Ci-dessous un petit kiff de carto voilà je te propose une carte du vignoble avec l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! La légende est accessible si tu cliques en haut à droite sur les petits losanges. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te donne rdv là bas.
+    <h2 data-fr="Carte" data-en="Map">Carte</h2> id="map-section">
+    <p data-fr="Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! <br><br> HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C&apos;EST NON SEULEMENT DANGEREUX MAIS AUSSI PAS CHEZ NOUS! <br><br> La légende est en haut à droite il faut cliquer sur l&apos;icône. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te donne rdv là bas. Quand tu arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te garer, mettre ta tente/ton van etc."
+      data-en="I nerded out and made a lil map of the vineyard so you can see where you&apos;re allowed to park, camp, where we&apos;ll be eating and partying, where to pee, shower.... Have a good look at it and please respect the areas as much as possible. <br><br> SUPER IMPORTANT DO NOT STRAY FROM THE AREAS MARKED ON THE MAP BC NOT ONLY IS IT DANGEROUS BUT ALSO NOT OUR PROPERTY LOL <br><br> The legend of the map is on the top right part of the map when clicking on the icon. The names like BASTIDON, MAZET, CABANON and CAVE are the names we use to talk about the houses so remember them in case we need to meet up there at some point. When you arrive, I&apos;ll meet you at the wine cellar and show you where to park, put your tent/van etc.">
+      Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec l&apos;accès et le parking, le lieu
+      des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max
+      stp! <br><br> HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C&apos;EST NON SEULEMENT DANGEREUX MAIS
+      AUSSI PAS CHEZ NOUS! <br><br> La légende est en haut à droite il faut cliquer sur l&apos;icône. Les noms BASTIDON,
+      MAZET, CABANON
+      et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te
+      donne rdv là bas. Quand tu arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te garer,
+      mettre ta tente/ton van etc.
     </p>
 
     <!-- YOUR QGIS CLOUD MAP IFRAME -->
-    <iframe 
-      class="qgis-map-frame" 
-      src="https://qgiscloud.com/rakmachine/Deffends/" 
-      allow="fullscreen"
+    <iframe class="qgis-map-frame" src="https://qgiscloud.com/rakmachine/Deffends/" allow="fullscreen"
       title="bisous bisous smack">
     </iframe>
   </main>
@@ -168,7 +259,7 @@
     function toggleLanguage() {
       currentLang = currentLang === 'fr' ? 'en' : 'fr';
       document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
-      
+
       // Fixed innerHTML so links work and do not print raw HTML string
       document.querySelectorAll('[data-fr]').forEach(el => {
         el.innerHTML = el.getAttribute(`data-${currentLang}`);
@@ -176,4 +267,5 @@
     }
   </script>
 </body>
+
 </html>
