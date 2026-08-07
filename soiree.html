@@ -292,7 +292,7 @@
       document.querySelectorAll('[data-fr]').forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
     }
 
-    function initSpookySwarm(totalCount = 10) {
+    function initSpookySwarm(totalCount = 5) {
       const spookyEmojis = ['🕷️', '🎃', '👻', '💀', '🦇'];
 
       for (let i = 0; i < totalCount; i++) {
@@ -333,7 +333,7 @@
     }
 
     // Spawns 10 mixed spooky emojis (2 of each) across the screen
-    initSpookySwarm(10);
+    initSpookySwarm(5);
   </script>
 </body>
 
