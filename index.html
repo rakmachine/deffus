@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Der Deff... édition hallowe...</title>
 
-  <!-- Google Font: Jersey 10 Charted -->
+  <!-- Google Font: Germania One -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
@@ -14,19 +14,12 @@
   <style>
     :root {
       --bordeaux: #1f1f1f;
-      /* Navigation bar */
       --bordeaux-dark: #121212;
-      /* Dropdown menu background */
       --vine-green: #3a3a3a;
-      /* Accent / Button background */
       --accent-hover: #555555;
-      /* Button hover state */
       --white: #ffffff;
-      /* Text color for buttons & nav */
       --off-white: #181818;
-      /* Main dark background */
       --text-color: #d1d1d1;
-      /* Body text color */
     }
 
     * {
@@ -41,13 +34,12 @@
       background-color: var(--off-white);
     }
 
-    /* Navigation Header */
+    /* Navigation Header with Spiderweb Background */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: var(--bordeaux);
       color: var(--white);
       display: flex;
       justify-content: space-between;
@@ -56,9 +48,32 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid #2a2a2a;
+      overflow: hidden;
+      /* Keeps background inside the navbar */
     }
 
-    /* Logo link using Jersey 10 Charted font */
+    /* Background Image Layer */
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bordeaux);
+      background-image: url('images/web_canva.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+
+      /* LIGHTEN CONTROL: Increase above 100% to make it lighter */
+      filter: brightness(120%);
+
+      z-index: -1;
+      /* Sits behind text and buttons */
+    }
+
+    /* Added text-shadow to make the logo title pop over the web pattern */
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
@@ -66,6 +81,7 @@
       font-size: 1.2rem;
       font-family: 'Germania One', cursive;
       letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     .nav-actions {
@@ -90,7 +106,6 @@
       background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Top Right Hamburger Button */
     .hamburger {
       display: flex;
       flex-direction: column;
@@ -107,7 +122,6 @@
       border-radius: 2px;
     }
 
-    /* Dropdown Menu Overlay */
     .nav-menu {
       position: fixed;
       top: 60px;
@@ -139,12 +153,11 @@
       color: #888888;
     }
 
-    /* Hero Background & Spooky Overlay */
+    /* Hero Background */
+    /* Hero Container */
     .hero {
       position: relative;
       height: 100vh;
-      background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(0, 0, 0, 0.3)),
-        url('https://rakmachine.github.io/deffus/images/drone3.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -152,11 +165,32 @@
       text-align: center;
       color: var(--white);
       padding: 0 1.5rem;
+      overflow: hidden;
     }
 
-    /* Main Title with Jersey 10 Charted Font */
+    /* Black & White Background Image Layer */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(0, 0, 0, 0.3)),
+        url('https://rakmachine.github.io/deffus/images/vignes4.jpg') center/cover no-repeat;
+      filter: grayscale(0%) brightness(80%);
+      /* Turns image into black and white */
+      z-index: 0;
+    }
+
+    /* Keep all content (heading, paragraph, button) on top of the image layer */
+    .hero>* {
+      position: relative;
+      z-index: 1;
+    }
+
     .hero h1 {
-      font-family: 'Germania One', display;
+      font-family: 'Germania One', cursive;
       font-size: 3.5rem;
       margin-bottom: 1rem;
       line-height: 1.2;
@@ -172,26 +206,34 @@
       color: #e0e0e0;
     }
 
-    /* Form Action Button */
+    /* Custom Spiderweb Image Button */
     .btn-main {
       background-color: var(--vine-green);
+      /* Make sure your uploaded image is saved as spiderweb.jpg in your images folder! */
+      background-image: url('images/web.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      /* Seamlessly blends the web image with your button color */
       color: var(--white);
-      padding: 0.9rem 2rem;
+      padding: 1rem 2.2rem;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
       font-size: 1rem;
       display: inline-block;
-      border: 1px solid #666;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      border: 1px solid #121212;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      /* Extra drop shadow so button text stays readable */
       transition: all 0.3s ease;
     }
 
     .btn-main:hover {
       background-color: var(--accent-hover);
-      border-color: #888;
+      border-color: #121212;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     }
 
     @media (max-width: 600px) {

@@ -32,12 +32,12 @@
       background-color: var(--off-white);
     }
 
+    /* Navigation Header with Spiderweb Background */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: var(--bordeaux);
       color: var(--white);
       display: flex;
       justify-content: space-between;
@@ -46,8 +46,32 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid #2a2a2a;
+      overflow: hidden;
+      /* Keeps background inside the navbar */
     }
 
+    /* Background Image Layer */
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bordeaux);
+      background-image: url('images/web_canva.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+
+      /* LIGHTEN CONTROL: Increase above 100% to make it lighter */
+      filter: brightness(120%);
+
+      z-index: -1;
+      /* Sits behind text and buttons */
+    }
+
+    /* Added text-shadow to make the logo title pop over the web pattern */
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
@@ -55,6 +79,7 @@
       font-size: 1.2rem;
       font-family: 'Germania One', cursive;
       letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     .nav-actions {
@@ -228,6 +253,16 @@
       </p>
     </div>
 
+    <h2 data-fr="Poster et lineup" data-en="Poster and lineup">Poster et lineup</h2>
+    <p data-fr="GALA NOUS PRÉPARE UN SUPER POSTER TROP HÂTE!! Le lineup reste encore à être finalisé ça va être méga stylé vous êtes pas prêts!! L'idée c'est que les DJ volontaires mixent ou jouent live pendant toute la soirée et à tour de rôle. Les genres musicaux sont complètement libres et ouverts donc si tu ne m'as pas encore dit que tu aimerais mixer mentionne le dans le google forms de la page d'acceuil et je t'ajouteraiiii"
+      data-en="GALA IS MAKING US A POSTER FOR THE PARTY AND LINEUP LETSGOOOOO! The lineup still needs to be finalized but it's going to be amaziiiiing you are not ready!! The idea is that the volunteer DJs mix or play live throughout the evening, in turns. The genres are completely free and open so if you haven't told me yet that you'd like to mix, write it in the google forms (homepage) and I'll add youuuu">
+      GALA NOUS PRÉPARE UN SUPER POSTER TROP HÂTE!! Le lineup reste encore à être finalisé ça va être méga stylé vous
+      êtes pas prêts!! L'idée c'est que les DJ
+      volontaires mixent ou jouent live pendant toute la soirée et à tour de rôle. Les genres musicaux sont complètement
+      libres et ouverts donc si tu ne m'as pas encore dit que tu aimerais mixer mentionne le dans le google forms de la
+      page d'acceuil et je t'ajouteraiiii
+    </p>
+
     <!-- 1. Déguisements -->
     <h2 data-fr="Déguisements" data-en="Costumes">Déguisements</h2>
     <p data-fr="Le thème c'est juste HALLOWEEN donc en gros c méga ouvert et tu peux te déguiser comme tu veux :) Note bien qu'il y aura un concours de déguisements par contre hihi et tu peux faire des déguisements de groupe / en paires!"
@@ -246,15 +281,6 @@
       aussi ok mais tu le reprends s'il en reste.
     </p>
 
-    <!-- 3. Musique -->
-    <h2 data-fr="DJ partayyyyy" data-en="DJ partayyyyy">Musique</h2>
-    <p data-fr="Le lineup reste encore à être finalisé ça va être méga stylé vous êtes pas prêts!! L'idée c'est que les DJ volontaires mixent ou jouent live pendant toute la soirée et à tour de rôle. Les genres musicaux sont complètement libres et ouverts donc si tu ne m'as pas encore dit que tu aimerais mixer mentionne le dans le google forms de la page d'acceuil et je t'ajouteraiiii"
-      data-en="The lineup still needs to be finalized but it's going to be amaziiiiing you are not ready!! The idea is that the volunteer DJs mix or play live throughout the evening, in turns. The genres are completely free and open so if you haven't told me yet that you'd like to mix, write it in the google forms (homepage) and I'll add youuuu">
-      Le lineup reste encore à être finalisé ça va être méga stylé vous êtes pas prêts!! L'idée c'est que les DJ
-      volontaires mixent ou jouent live pendant toute la soirée et à tour de rôle. Les genres musicaux sont complètement
-      libres et ouverts donc si tu ne m'as pas encore dit que tu aimerais mixer mentionne le dans le google forms de la
-      page d'acceuil et je t'ajouteraiiii
-    </p>
   </main>
 
   <script>

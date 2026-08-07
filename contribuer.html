@@ -32,12 +32,12 @@
       background-color: var(--off-white);
     }
 
+    /* Navigation Header with Spiderweb Background */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: var(--bordeaux);
       color: var(--white);
       display: flex;
       justify-content: space-between;
@@ -46,8 +46,32 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid #2a2a2a;
+      overflow: hidden;
+      /* Keeps background inside the navbar */
     }
 
+    /* Background Image Layer */
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bordeaux);
+      background-image: url('images/web_canva.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+
+      /* LIGHTEN CONTROL: Increase above 100% to make it lighter */
+      filter: brightness(120%);
+
+      z-index: -1;
+      /* Sits behind text and buttons */
+    }
+
+    /* Added text-shadow to make the logo title pop over the web pattern */
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
@@ -55,6 +79,7 @@
       font-size: 1.2rem;
       font-family: 'Germania One', cursive;
       letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     .nav-actions {
@@ -148,15 +173,31 @@
 
     .btn-main {
       background-color: var(--vine-green);
+      /* Make sure your uploaded image is saved as spiderweb.jpg in your images folder! */
+      background-image: url('images/web.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      /* Seamlessly blends the web image with your button color */
       color: var(--white);
-      padding: 0.8rem 1.8rem;
+      padding: 1rem 2.2rem;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 30px;
       font-weight: bold;
       font-size: 1rem;
       display: inline-block;
-      margin: 0.5rem 0 1.5rem 0;
-      border: 1px solid #666;
+      border: 1px solid #121212;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      /* Extra drop shadow so button text stays readable */
+      transition: all 0.3s ease;
+    }
+
+    .btn-main:hover {
+      background-color: var(--accent-hover);
+      border-color: #121212;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     }
 
     .content-wrapper {
