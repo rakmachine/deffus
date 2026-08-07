@@ -370,7 +370,10 @@
   <div id="audio-overlay" class="audio-overlay" onclick="startSpookyMode()">
     <div class="overlay-content">
       <h2 data-fr="Entre à tes risques et périls" data-en="Enter at own risk">Entre à tes risques et périls</h2>
-      <p data-fr="Écoute bien..." data-en="Listen carefully...">Écoute bien...</p>
+      <p data-fr="je me suis fait kiffer et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau"
+        data-en="I had a little fun and learnt to host webpages on Github to organize the weekend">je me suis fait
+        kiffer
+        et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau</p>
     </div>
   </div>
 
@@ -393,10 +396,6 @@
   </nav>
 
   <header class="hero">
-    <h1 data-fr="mouahaha" data-en="mouahaha">mouahaha</h1>
-    <p data-fr="je me suis fait kiffer et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau"
-      data-en="I had a little fun and learnt to host webpages on Github to organize the weekend">je me suis fait kiffer
-      et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEPh5wIhdYvhx9yFw1-U19imRA-nf6CNa80fAPD5tFKFnXGg/viewform?usp=dialog"
       target="_blank" class="btn-main" data-fr="AVANT TOUT: remplis ce formulaire!!"
       data-en="BEFORE ANYTHING ELSE: fill in this form!!">AVANT TOUT: remplis ce formulaire!!</a>
@@ -418,7 +417,7 @@
 
       spookyAudio.volume = 1.0;
       spookyAudio.play()
-        .then(() => console.log("👻 Spooky audio playing successfully!"))
+        .then(() => console.log("Spooky audio playing successfully!"))
         .catch((err) => {
           console.error("Audio playback error:", err);
           alert(`Audio Playback Error: ${err.message}\nCheck if the filename in sound_effects/ matches exactly!`);
