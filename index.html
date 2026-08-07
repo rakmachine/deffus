@@ -49,10 +49,8 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid #2a2a2a;
       overflow: hidden;
-      /* Keeps background inside the navbar */
     }
 
-    /* Background Image Layer */
     nav::before {
       content: '';
       position: absolute;
@@ -65,15 +63,10 @@
       background-size: cover;
       background-position: center;
       background-blend-mode: overlay;
-
-      /* LIGHTEN CONTROL: Increase above 100% to make it lighter */
       filter: brightness(120%);
-
       z-index: -1;
-      /* Sits behind text and buttons */
     }
 
-    /* Added text-shadow to make the logo title pop over the web pattern */
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
@@ -153,7 +146,6 @@
       color: #888888;
     }
 
-    /* Hero Background */
     /* Hero Container */
     .hero {
       position: relative;
@@ -168,7 +160,6 @@
       overflow: hidden;
     }
 
-    /* Black & White Background Image Layer */
     .hero::before {
       content: '';
       position: absolute;
@@ -177,13 +168,11 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(0, 0, 0, 0.3)),
-        url('https://rakmachine.github.io/deffus/images/vignes_automne2.jpg') center/cover no-repeat;
-      filter: grayscale(100%) brightness(60%);
-      /* Turns image into black and white */
+        url('https://rakmachine.github.io/deffus/images/vignes4.jpg') center/cover no-repeat;
+      filter: grayscale(0%) brightness(60%);
       z-index: 0;
     }
 
-    /* Keep all content (heading, paragraph, button) on top of the image layer */
     .hero>* {
       position: relative;
       z-index: 1;
@@ -209,12 +198,10 @@
     /* Custom Spiderweb Image Button */
     .btn-main {
       background-color: var(--vine-green);
-      /* Make sure your uploaded image is saved as spiderweb.jpg in your images folder! */
       background-image: url('images/web.jpg');
       background-size: cover;
       background-position: center;
       background-blend-mode: overlay;
-      /* Seamlessly blends the web image with your button color */
       color: var(--white);
       padding: 1rem 2.2rem;
       text-decoration: none;
@@ -225,7 +212,6 @@
       border: 1px solid #121212;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-      /* Extra drop shadow so button text stays readable */
       transition: all 0.3s ease;
     }
 
@@ -245,10 +231,148 @@
         font-size: 1rem;
       }
     }
+
+    /* 1. Lightning Overlay */
+    .lightning-flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 50;
+      transition: opacity 0.05s ease-in-out;
+    }
+
+    .lightning-flash.flash {
+      opacity: 0.65;
+    }
+
+    /* 2. Flying Bat Images */
+    .bat-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1500;
+      animation: batFlightX 2.2s linear forwards;
+    }
+
+    .flying-bat {
+      width: 48px;
+      height: auto;
+      filter: none;
+      animation: batSwoopY 2.2s ease-in-out forwards;
+    }
+
+    @keyframes batFlightX {
+      0% {
+        transform: translateX(var(--startX));
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      85% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(var(--endX));
+        opacity: 0;
+      }
+    }
+
+    @keyframes batSwoopY {
+      0% {
+        transform: translateY(var(--startY)) rotate(15deg);
+      }
+
+      40% {
+        transform: translateY(var(--midY)) rotate(-5deg);
+      }
+
+      100% {
+        transform: translateY(var(--endY)) rotate(-35deg);
+      }
+    }
+
+    /* 3. Rain Effect */
+    .rain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .drop {
+      position: absolute;
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.35));
+      width: 1px;
+      height: 60px;
+      opacity: 0.5;
+      animation: fall 0.7s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* 4. Start Overlay */
+    .audio-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      cursor: pointer;
+      transition: opacity 0.5s ease;
+    }
+
+    .overlay-content {
+      text-align: center;
+      color: #fff;
+      font-family: 'Germania One', cursive;
+    }
+
+    .overlay-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Weather & Audio Overlays placed correctly inside body -->
+  <div id="lightning-flash" class="lightning-flash"></div>
+  <div id="rain-container" class="rain-container"></div>
+
+  <div id="audio-overlay" class="audio-overlay" onclick="startSpookyMode()">
+    <div class="overlay-content">
+      <h2 data-fr="Entre à tes risques et périls" data-en="Enter at own risk">Entre à tes risques et périls</h2>
+      <p data-fr="Écoute bien..." data-en="Listen carefully...">Écoute bien...</p>
+    </div>
+  </div>
 
   <nav>
     <div class="nav-brand"><a href="index.html">Der Deff... édition hallowe...</a></div>
@@ -269,7 +393,7 @@
   </nav>
 
   <header class="hero">
-    <h1 data-fr="trop hâte!!" data-en="can't wait!!">trop hâte!!</h1>
+    <h1 data-fr="mouahaha" data-en="mouahaha">mouahaha</h1>
     <p data-fr="je me suis fait kiffer et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau"
       data-en="I had a little fun and learnt to host webpages on Github to organize the weekend">je me suis fait kiffer
       et j'ai appris à faire un mini site web pour l'orga du weekend lol c cadeau</p>
@@ -279,6 +403,41 @@
   </header>
 
   <script>
+    // Variable to hold audio instance
+    let spookyAudio = null;
+
+    // Start Spooky Mode (Triggered on Click)
+    function startSpookyMode() {
+      const overlay = document.getElementById('audio-overlay');
+
+      // Initialize Audio inside the click handler using your exact file name
+      if (!spookyAudio) {
+        spookyAudio = new Audio('sound_effects/halloween_soundeffect.mp3');
+        spookyAudio.loop = true;
+      }
+
+      spookyAudio.volume = 1.0;
+      spookyAudio.play()
+        .then(() => console.log("👻 Spooky audio playing successfully!"))
+        .catch((err) => {
+          console.error("Audio playback error:", err);
+          alert(`Audio Playback Error: ${err.message}\nCheck if the filename in sound_effects/ matches exactly!`);
+        });
+
+      if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 500);
+      }
+
+      createRain();
+      triggerLightningAndBats();
+
+      setInterval(() => {
+        triggerLightningAndBats();
+      }, 7000 + Math.random() * 7000);
+    }
+
+    // Navigation Controls
     function toggleMenu() {
       document.getElementById('nav-menu').classList.toggle('active');
     }
@@ -290,6 +449,73 @@
       document.querySelectorAll('[data-fr]').forEach(el => {
         el.innerText = el.getAttribute(`data-${currentLang}`);
       });
+    }
+
+    // Bat Image Paths
+    const batImages = [
+      'images/bat1.png',
+      'images/bat2.png',
+      'images/bat3.png',
+      'images/bat4.png',
+      'images/bat5.png',
+      'images/bat6.png',
+      'images/bat7.png'
+    ];
+
+    // Rain Animation Generator
+    function createRain() {
+      const container = document.getElementById('rain-container');
+      const dropCount = 70;
+      for (let i = 0; i < dropCount; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('drop');
+        drop.style.left = `${Math.random() * 100}%`;
+        drop.style.animationDuration = `${0.4 + Math.random() * 0.4}s`;
+        drop.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(drop);
+      }
+    }
+
+    // Double Flash Lightning & Flying Bats Effect
+    function triggerLightningAndBats() {
+      const flash = document.getElementById('lightning-flash');
+      if (flash) {
+        flash.classList.add('flash');
+        setTimeout(() => flash.classList.remove('flash'), 80);
+        setTimeout(() => flash.classList.add('flash'), 160);
+        setTimeout(() => flash.classList.remove('flash'), 260);
+      }
+
+      const batCount = 5 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < batCount; i++) {
+        setTimeout(() => {
+          const wrapper = document.createElement('div');
+          wrapper.classList.add('bat-wrapper');
+
+          const bat = document.createElement('img');
+          bat.src = batImages[Math.floor(Math.random() * batImages.length)];
+          bat.classList.add('flying-bat');
+          wrapper.appendChild(bat);
+
+          const startX = `-15vw`;
+          const endX = `${75 + Math.random() * 10}vw`;
+
+          const startY = `${15 + Math.random() * 15}vh`;
+          const midY = `${parseFloat(startY) + 12}vh`;
+          const endY = `-20vh`;
+
+          wrapper.style.setProperty('--startX', startX);
+          wrapper.style.setProperty('--endX', endX);
+
+          bat.style.setProperty('--startY', startY);
+          bat.style.setProperty('--midY', midY);
+          bat.style.setProperty('--endY', endY);
+
+          document.body.appendChild(wrapper);
+
+          setTimeout(() => wrapper.remove(), 2300);
+        }, i * 140);
+      }
     }
   </script>
 </body>
