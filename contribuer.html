@@ -195,19 +195,13 @@
     }
 
     /* Spider particle effect CSS */
-    /* Styling for crawling spiders */
-    .crawling-spider {
+    .spider-particle {
       position: fixed;
-      top: 0;
-      left: 0;
-      font-size: 1.8rem;
-      /* Size of spiders */
-      z-index: 9999;
-      /* Keeps them on top of all elements */
       pointer-events: none;
-      /* Lets clicks pass right through them */
+      font-size: 1.5rem;
+      z-index: 9999;
       user-select: none;
-      will-change: left, top, transform;
+      animation: spiderExplode 0.8s ease-out forwards;
     }
 
     @keyframes spiderExplode {
@@ -308,55 +302,35 @@
       });
     }
 
-    function initCrawlingSpiders(spiderCount = 6) {
+    function spawnSpiders(event) {
+      const spiderCount = 12;
+      const x = event.clientX;
+      const y = event.clientY;
+
       for (let i = 0; i < spiderCount; i++) {
         const spider = document.createElement('span');
-        spider.classList.add('crawling-spider');
+        spider.classList.add('spider-particle');
         spider.innerText = '🕷️';
 
-        // Set initial random position
-        let currentX = Math.random() * (window.innerWidth - 50);
-        let currentY = Math.random() * (window.innerHeight - 50);
-        spider.style.left = `${currentX}px`;
-        spider.style.top = `${currentY}px`;
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 60 + Math.random() * 80;
+        const dx = Math.cos(angle) * distance + 'px';
+        const dy = Math.sin(angle) * distance + 'px';
+        const rot = (Math.random() * 360 - 180) + 'deg';
+
+        spider.style.left = x + 'px';
+        spider.style.top = y + 'px';
+        spider.style.setProperty('--dx', dx);
+        spider.style.setProperty('--dy', dy);
+        spider.style.setProperty('--rot', rot);
 
         document.body.appendChild(spider);
 
-        // Function to handle continuous random movement
-        function crawl() {
-          const nextX = Math.random() * (window.innerWidth - 50);
-          const nextY = Math.random() * (window.innerHeight - 50);
-
-          // Calculate direction to rotate the spider toward where it's walking
-          const deltaX = nextX - currentX;
-          const deltaY = nextY - currentY;
-          const angleRad = Math.atan2(deltaY, deltaX);
-          const angleDeg = (angleRad * 180 / Math.PI) + 90; // Orient emoji head
-
-          // Random speed (takes between 2.5s and 6s to reach destination)
-          const moveDuration = 2.5 + Math.random() * 3.5;
-
-          // Apply transition for smooth movement & turning
-          spider.style.transition = `left ${moveDuration}s linear, top ${moveDuration}s linear, transform 0.4s ease`;
-          spider.style.transform = `rotate(${angleDeg}deg)`;
-          spider.style.left = `${nextX}px`;
-          spider.style.top = `${nextY}px`;
-
-          currentX = nextX;
-          currentY = nextY;
-
-          // Random pause (0.5s to 2.5s) before picking the next target
-          const pauseDuration = 500 + Math.random() * 2000;
-          setTimeout(crawl, (moveDuration * 1000) + pauseDuration);
-        }
-
-        // Start crawling after a short staggered start
-        setTimeout(crawl, Math.random() * 1500);
+        setTimeout(() => {
+          spider.remove();
+        }, 800);
       }
     }
-
-    // Start 6 roaming spiders when the script runs
-    initCrawlingSpiders(6);
 
     // Directly bind the spider click effect to all .btn-main elements
     document.querySelectorAll('.btn-main').forEach(button => {
