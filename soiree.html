@@ -174,7 +174,18 @@
 
     .flyer-box a {
       color: inherit;
-      /* Automatically matches the text color (white) */
+    }
+
+    /* Styling for crawling/floating pumpkins */
+    .crawling-pumpkin {
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-size: 1.8rem;
+      z-index: 9999;
+      pointer-events: none;
+      user-select: none;
+      will-change: left, top, transform;
     }
   </style>
 </head>
@@ -204,16 +215,16 @@
 
     <!-- 4. Code de conduite -->
     <div class="flyer-box">
-      <h2 data-fr="Code de conduite" data-en="Code of conduct">Code de Conduite</h2>
-      <p data-fr="JE NE TOUCHERAI PERSONNE SANS SON CONSENTEMENT<br>TOLÉRANCE ZÉRO LGBTPHOBIE SEXISME RACISME CLASSISME ET TOUS LES AUTRES ISMES<br>JE NE ME BALADERAI POINT HORS DE LA ZONE DÉSIGNÉE SUR LA <a href='lieu.html#map-section'>CARTE</a><br>JE NE FERAI NUL FEU<br>LES DÉCHETS ÇA VA DANS LA POUBELLE<br>JE NE FUMERAI QUE DANS LES ZONES DÉSIGNÉES<br>SI JE NE SUIS PAS SÛR.E JE DEMANDE À RAKI OU UN.E MEMBRE DE SA FAMILLE"
-        data-en="I WILL NOT TOUCH ANYONE WITHOUT THEIR CONSENT<br>ZERO TOLERANCE FOR LGBTPHOBIA SEXISM RACISM CLASSISM AND ALL OTHER ISMS<br>I WILL NOT WANDER OUT OF DESIGNATED AREA ON <a href='lieu.html#map-section'>MAP</a> <br>I WILL NOT MAKE ANY FIRES<br>TRASH IN THE BIN ONLY<br>I WILL ONLY SMOKE IN DESIGNATED AREAS<br>IF I AM NOT SURE I WILL ASK MAREIKE OR A FAMILY MEMBER OF HERS">
-        JE NE TOUCHERAI PERSONNE SANS SON CONSENTEMENT<br>
-        TOLÉRANCE ZÉRO LGBTPHOBIE SEXISME RACISME CLASSISME ET TOUS LES AUTRES ISMES<br>
-        JE NE ME BALADERAI POINT HORS DE LA ZONE DÉSIGNÉE SUR LA <a href="lieu.html#map-section">CARTE</a><br>
-        JE NE FERAI NUL FEU<br>
-        LES DÉCHETS ÇA VA DANS LA POUBELLE<br>
-        JE NE FUMERAI QUE DANS LES ZONES DÉSIGNÉES<br>
-        SI JE NE SUIS PAS SÛR.E JE DEMANDE À RAKI OU UN.E MEMBRE DE SA FAMILLE
+      <h2 data-fr="Les sept commandements" data-en="The seven commandements">Les sept commandements</h2>
+      <p data-fr="1. JE NE TOUCHE AUTRUI SANS CONSENTEMENT<br>2. JE DÉNONCE LES COMPORTEMENTS LGBTPHOBES SEXISTES RACISTES ET TOUS LES AUTRES ISTES<br>3. JE NE ME BALADE POINT HORS DE LA ZONE DÉSIGNÉE SUR LA <a href='lieu.html#map-section'>CARTE</a><br>4. JE NE FAIS NUL FEU<br>5. JE JETTE MES DÉCHETS DANS LA POUBELLE<br>6. JE NE FUME QUE DANS LES ZONES DÉSIGNÉES ET J'UTILISE UN CENDRIER<br>7. SI JE NE SUIS PAS SÛR.E JE DEMANDE À RAKI OU UN.E MEMBRE DE SA FAMILLE"
+        data-en="1. I WILL NOT TOUCH ANYONE WITHOUT THEIR CONSENT<br>2. I WILL CALL OUT LGBTPHOBIA SEXISM RACISM CLASSISM AND ALL OTHER ISMS<br>3. I WILL NOT WANDER OUT OF DESIGNATED AREA ON <a href='lieu.html#map-section'>MAP</a> <br>4. I WILL NOT MAKE ANY FIRES<br>5. I WILL PUT MY TRASH IN THE BIN<br>6. I WILL ONLY SMOKE IN DESIGNATED AREAS AND USE AN ASHTRAY<br>7. IF I AM NOT SURE I WILL ASK MAREIKE OR A FAMILY MEMBER OF HERS">
+        1. JE NE TOUCHE AUTRUI SANS CONSENTEMENT<br>
+        2. JE DÉNONCE LES COMPORTEMENTS LGBTPHOBES SEXISTES RACISTES ET TOUS LES AUTRES ISTES<br>
+        3. JE NE ME BALADE POINT HORS DE LA ZONE DÉSIGNÉE SUR LA <a href="lieu.html#map-section">CARTE</a><br>
+        4. JE NE FAIS NUL FEU<br>
+        5. JE JETTE MES DÉCHETS DANS LA POUBELLE<br>
+        6. JE NE FUME QUE DANS LES ZONES DÉSIGNÉES ET J'UTILISE UN CENDRIER<br>
+        7. SI JE NE SUIS PAS SÛR.E JE DEMANDE À RAKI OU UN.E MEMBRE DE SA FAMILLE
       </p>
     </div>
 
@@ -254,6 +265,47 @@
       document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
       document.querySelectorAll('[data-fr]').forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
     }
+
+    function initCrawlingPumpkins(pumpkinCount = 6) {
+      for (let i = 0; i < pumpkinCount; i++) {
+        const pumpkin = document.createElement('span');
+        pumpkin.classList.add('crawling-pumpkin');
+        pumpkin.innerText = '🎃';
+
+        // Set initial random position
+        let currentX = Math.random() * (window.innerWidth - 50);
+        let currentY = Math.random() * (window.innerHeight - 50);
+        pumpkin.style.left = `${currentX}px`;
+        pumpkin.style.top = `${currentY}px`;
+
+        document.body.appendChild(pumpkin);
+
+        function floatAround() {
+          const nextX = Math.random() * (window.innerWidth - 50);
+          const nextY = Math.random() * (window.innerHeight - 50);
+
+          // Subtle random tilt for pumpkins (-20deg to 20deg)
+          const tilt = (Math.random() * 40 - 20) + 'deg';
+          const moveDuration = 3 + Math.random() * 4;
+
+          pumpkin.style.transition = `left ${moveDuration}s ease-in-out, top ${moveDuration}s ease-in-out, transform ${moveDuration}s ease-in-out`;
+          pumpkin.style.transform = `rotate(${tilt})`;
+          pumpkin.style.left = `${nextX}px`;
+          pumpkin.style.top = `${nextY}px`;
+
+          currentX = nextX;
+          currentY = nextY;
+
+          const pauseDuration = 500 + Math.random() * 2000;
+          setTimeout(floatAround, (moveDuration * 1000) + pauseDuration);
+        }
+
+        setTimeout(floatAround, Math.random() * 1500);
+      }
+    }
+
+    // Start 6 roaming pumpkins when the script runs
+    initCrawlingPumpkins(6);
   </script>
 </body>
 
