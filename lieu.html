@@ -6,25 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lieu et accès, tout ce qu'il faut savoir</title>
 
-  <!-- Google Font: Jersey 10 Charted -->
+  <!-- Google Font: Germania One -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
       --bordeaux: #1f1f1f;
-      /* Barre de navigation & titres principaux */
       --bordeaux-dark: #121212;
-      /* Fond du menu déroulant mobile */
       --vine-green: #5a5a5a;
-      /* Lignes de séparation & accents */
       --white: #ffffff;
-      /* Texte des boutons & navigation */
       --off-white: #181818;
-      /* Fond général de la page (noir brumeux) */
       --text-color: #d1d1d1;
-      /* Couleur du texte principal (gris clair) */
     }
 
     * {
@@ -39,7 +36,7 @@
       background-color: var(--off-white);
     }
 
-    /* Navigation Header with Spiderweb Background */
+    /* Navigation Header */
     nav {
       position: fixed;
       top: 0;
@@ -54,37 +51,31 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid #2a2a2a;
       overflow: hidden;
-      /* Keeps background inside the navbar */
     }
 
     /* Background Image Layer */
     nav::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-color: var(--bordeaux);
-      background-image: url('images/web_canva.png');
+      background-image: url("images/web_canva.png");
       background-size: cover;
       background-position: center;
       background-blend-mode: overlay;
-
-      /* LIGHTEN CONTROL: Increase above 100% to make it lighter */
       filter: brightness(120%);
-
       z-index: -1;
-      /* Sits behind text and buttons */
     }
 
-    /* Added text-shadow to make the logo title pop over the web pattern */
     .nav-brand a {
       color: var(--white);
       text-decoration: none;
       font-weight: normal;
       font-size: 1.2rem;
-      font-family: 'Germania One', cursive;
+      font-family: "Germania One", cursive;
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
@@ -113,6 +104,7 @@
       cursor: pointer;
       background: none;
       border: none;
+      padding: 0;
     }
 
     .hamburger span {
@@ -133,7 +125,7 @@
       flex-direction: column;
       padding: 2rem 1.5rem;
       gap: 1.5rem;
-      transition: 0.3s ease;
+      transition: right 0.3s ease;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -148,16 +140,19 @@
       font-weight: 500;
     }
 
+    .nav-menu a:hover {
+      text-decoration: underline;
+    }
+
     /* Page Content */
     main {
-      padding: 6rem 1.5rem 3rem 1.5rem;
+      padding: 6rem 1.5rem 3rem;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    /* Applied Jersey 10 Charted to Main H1 Title */
     h1 {
-      font-family: 'Germania One', display;
+      font-family: "Germania One", cursive;
       color: var(--white);
       font-size: 3rem;
       margin-bottom: 1rem;
@@ -166,9 +161,8 @@
       letter-spacing: 1px;
     }
 
-    /* Applied Jersey 10 Charted to H2 Subtitles */
     h2 {
-      font-family: 'Germania One', display;
+      font-family: "Germania One", cursive;
       color: var(--white);
       font-size: 2.2rem;
       margin-top: 2rem;
@@ -183,44 +177,98 @@
       margin-bottom: 1.5rem;
     }
 
-    /* QGIS Map Iframe Styling */
+    /* Bullet Lists */
+    ul {
+      margin: 0 0 1.5rem 0;
+      padding-left: 2rem;
+      list-style-position: outside;
+    }
+
+    li {
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+      padding-left: 0.25rem;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Links inside content */
+    main a {
+      color: var(--white);
+      font-weight: bold;
+    }
+
+    /* QGIS Map */
     .qgis-map-frame {
+      display: block;
       width: 100%;
       height: 75vh;
-      /* Sets height to 75% of the browser screen height */
       min-height: 600px;
-      /* Ensures it never gets squished on mobile */
       border: 1px solid #333333;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       margin-top: 1rem;
     }
 
-    /* Indented Bullet List Styling */
-    ul {
-      margin-left: 2rem;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
-    }
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      main {
+        padding: 5.5rem 1rem 2rem;
+      }
 
-    li {
-      line-height: 1.6;
-      margin-bottom: 0.6rem;
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .nav-brand a {
+        font-size: 1rem;
+      }
+
+      .qgis-map-frame {
+        height: 70vh;
+        min-height: 500px;
+      }
     }
-    
   </style>
 </head>
 
 <body>
 
   <nav>
-    <div class="nav-brand"><a href="index.html">Der Deffus édition halloween </a></div>
+    <div class="nav-brand">
+      <a href="index.html">Der Deffus édition halloween</a>
+    </div>
+
     <div class="nav-actions">
-      <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
+      <button
+        class="lang-btn"
+        id="lang-toggle"
+        onclick="toggleLanguage()"
+        type="button"
+      >
+        EN
+      </button>
+
+      <button
+        class="hamburger"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
+
     <div class="nav-menu" id="nav-menu">
       <a href="lieu.html" data-fr="Lieu" data-en="Site">Lieu</a>
       <a href="planning.html" data-fr="Planning" data-en="Schedule">Planning</a>
@@ -232,118 +280,210 @@
   </nav>
 
   <main>
-    <h1 data-fr="Le Lieu" data-en="The Site">Le Lieu</h1>
-    <p data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas... "
-      data-en="Der Deffus welcomes you with open arms - but be careful not to get lost...">Der Deffus vous accueille à
-      bras ouverts - mais attention, ne vous perdez pas...</p>
+
+    <h1
+      data-fr="Le Lieu"
+      data-en="The Site"
+    >
+      Le Lieu
+    </h1>
+
+    <p
+      data-fr="Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas..."
+      data-en="Der Deffus welcomes you with open arms - but be careful not to get lost..."
+    >
+      Der Deffus vous accueille à bras ouverts - mais attention, ne vous perdez pas...
+    </p>
+
 
     <!-- 1st Subtitle & Text -->
-    <h2 data-fr="Accès et Transport" data-en="Access & Transport">Accès et Transport</h2>
-      <p
-        data-fr="Adresse : 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume. Tu peux aussi ouvrir directement la localisation sur <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>Google Maps</a>."
-        data-en="Address: 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume. You can also open the location directly on <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>Google Maps</a>."
+    <h2
+      data-fr="Accès et Transport"
+      data-en="Access & Transport"
+    >
+      Accès et Transport
+    </h2>
+
+    <p
+      data-fr="Adresse : 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume. Tu peux aussi ouvrir directement la localisation sur <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>Google Maps</a>."
+      data-en="Address: 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume. You can also open the location directly on <a href='https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr' target='_blank' style='color: var(--white); font-weight: bold;'>Google Maps</a>."
+    >
+      Adresse : 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume.
+      Tu peux aussi ouvrir directement la localisation sur
+      <a
+        href="https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr"
+        target="_blank"
       >
-        Adresse : 2020 Chemin du Défends, 83470 Saint-Maximin-la-Sainte-Baume.
-        Tu peux aussi ouvrir directement la localisation sur
+        Google Maps
+      </a>.
+    </p>
+
+    <p
+      data-fr="Arrivée en voiture : Remplis le formulaire pour que je sache quel jour tu comptes arriver et à quelle heure approx. Et tiens-moi au courant de ton heure exacte d'arrivée (en cas de retard, etc.) via WhatsApp ! Je serai là pour t'accueillir à la cave quand tu arrives."
+      data-en="Arrival by car: Fill in the form so that I know which day you want to arrive and at what time approximately. Keep me updated on your exact arrival time (in case of delays, etc.) via WhatsApp! I'll be there to greet you at the wine cellar when you arrive."
+    >
+      Arrivée en voiture : Remplis le formulaire pour que je sache quel jour tu comptes
+      arriver et à quelle heure approx. Et tiens-moi au courant de ton heure exacte
+      d'arrivée (en cas de retard, etc.) via WhatsApp ! Je serai là pour t'accueillir
+      à la cave quand tu arrives.
+    </p>
+
+    <p
+      data-fr="Arrivée en train, FlixBus ou avion : Puisque le Deffus n'est pas accessible directement via ces moyens de transport, tu devras prendre un bus ZOU ! depuis la station où tu arriveras. Les bus sont connectés à : Marseille Saint-Charles (FlixBus et train) / Aix-en-Provence TGV (train) / Marseille Provence Airport (avion). Il faudra que tu descendes à l'arrêt de bus <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>Lycée Janetti</a>."
+      data-en="Arrival by train, FlixBus or plane: Since the Deffus is not directly accessible via these means of transportation, you'll need to take a ZOU! bus from the station where you arrive. The buses are connected to: Marseille Saint-Charles (FlixBus and train) / Aix-en-Provence TGV (train) / Marseille Provence Airport (plane). You'll need to get off at the bus stop called <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>Lycée Janetti</a>."
+    >
+      Arrivée en train, FlixBus ou avion : Puisque le Deffus n'est pas accessible
+      directement via ces moyens de transport, tu devras prendre un bus ZOU ! depuis
+      la station où tu arriveras. Les bus sont connectés à : Marseille Saint-Charles
+      (FlixBus et train) / Aix-en-Provence TGV (train) / Marseille Provence Airport
+      (avion). Il faudra que tu descendes à l'arrêt de bus
+      <a
+        href="https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7"
+        target="_blank"
+      >
+        Lycée Janetti
+      </a>.
+    </p>
+
+    <!-- Transport details -->
+    <ul>
+
+      <li
+        data-fr="Depuis Aix-en-Provence TGV : Consulte les horaires de bus sur <a href='https://zou.maregionsud.fr/public/media/file/2026-08/zou83_ligne93_brignoles_aix_en_provence_aix-tgv_ac-01092026-v05082026.pdf?fbclid=IwZnRzaATuH9RwZG9mAWZkaWQWUMl4lb8C7uu2sPCjqWDmEd8YViyqlGV4dG4DYWVtAjExAHNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR7PPfUQVB0cbohtQs0ipZ84z52zQl9pHtK1-o1wiWgakr9PRit4Wh7iym0Bsw_aem_VP5Tg226LnimCACReti_Tw' target='_blank' style='color: var(--white); font-weight: bold;'>ce PDF</a>. IMPORTANT : la ligne de bus reliant Aix TGV et Lycée Janetti sera inaugurée en septembre et les horaires peuvent encore changer - je vous tiens au courant si c'est le cas."
+        data-en="From Aix-en-Provence TGV: Check the bus timetables on the <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>ZOU! website</a>. IMPORTANT: the bus line connecting Aix TGV and Lycée Janetti will be launched in September and the timetables may still change."
+      >
+        Depuis Aix-en-Provence TGV : Consulte les horaires de bus sur
         <a
-          href="https://www.google.com/maps/place/Domaine+du+Deffends/@43.4547931,5.8576575,13.47z/data=!4m5!3m4!1s0x0:0x1ecc71874b40b315!8m2!3d43.4473026!4d5.8347704?hl=fr"
+          href="https://zou.maregionsud.fr/public/media/file/2026-08/zou83_ligne93_brignoles_aix_en_provence_aix-tgv_ac-01092026-v05082026.pdf?fbclid=IwZnRzaATuH9RwZG9mAWZkaWQWUMl4lb8C7uu2sPCjqWDmEd8YViyqlGV4dG4DYWVtAjExAHNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR7PPfUQVB0cbohtQs0ipZ84z52zQl9pHtK1-o1wiWgakr9PRit4Wh7iym0Bsw_aem_VP5Tg226LnimCACReti_Tw"
           target="_blank"
-          style="color: var(--white); font-weight: bold;"
-        >Google Maps</a>.
-      </p>
-
-      <p
-        data-fr="Arrivée en voiture : Remplis le formulaire pour que je sache quel jour tu comptes arriver et à quelle heure approx. Et tiens moi au courant de ton heure exacte d'arrivée (en cas de retards etc.) via whatsapp!Je serai là pour t'accueiller à la cave quand tu arrives."
-        data-en="Arrival by car: Fill in the form so that I know which day you want to arrive and at what time approc. Keep me updated on your trip progress and ETA (in case of delays etc.) via whatsapp! I'll be ready to greet you at the wine cellar."
-      >
-        Arrivée en voiture : Remplis le formulaire pour que je sache quel jour tu comptes arriver et à quelle heure approx. Et tiens moi au courant de ton heure exacte d'arrivée (en cas de retards etc.) via whatsapp!Je serai là pour t'accueiller à la cave quand tu arrives.
-      </p>
-    
-      <p
-        data-fr="Arrivée en train, flixbus ou avion : Puisque le Deffus n'est pas accessible directement via ces moyens de transport, tu devras prendre un bus zou! depuis la station où tu arriveras. Les bus sont connectés à: Marseille St Charles (Flixbus et train)/Aix en Provence TGV (train)/ Marseille Aeroport CDG (avion). Il faudra que tu descende à l'arrêt de bus <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>Lycée Janetti.</a>"
-        data-en="Arrival by train, flixbus or plane: Since the Deffus is not accessible directly via these means of transportation, you'll need to get a bus zou! from the station you arrive at. The buses are connected to: Marseille St Charles (Flixbus and train)/Aix en Provence TGV (train)/ Marseille Aeroport CDG (plane). You'll need to get off at the bus stop called <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>Lycée Janetti.</a>"
-      >
-        Arrivée en train, flixbus ou avion : Puisque le Deffus n'est pas accessible directement via ces moyens de transport, tu devras prendre un bus zou! depuis la station où tu arriveras. Les bus sont connectés à: Marseille St Charles (Flixbus et train)/Aix en Provence TGV (train)/ Marseille Aeroport CDG (avion). Il faudra que tu descende à l'arrêt de bus <a href='https://maps.app.goo.gl/wDFcX8hoTsFjbaHw7' target='_blank' style='color: var(--white); font-weight: bold;'>Lycée Janetti.</a>
-      </p>
-
-      <ul
-      <li
-        data-fr="Depuis Aix-en-Provence TGV : Consulte les horaires de bus sur <a href='https://zou.maregionsud.fr/public/media/file/2026-08/zou83_ligne93_brignoles_aix_en_provence_aix-tgv_ac-01092026-v05082026.pdf?fbclid=IwZnRzaATuH9RwZG9mAWZkaWQWUMl4lb8C7uu2sPCjqWDmEd8YViyqlGV4dG4DYWVtAjExAHNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR7PPfUQVB0cbohtQs0ipZ84z52zQl9pHtK1-o1wiWgakr9PRit4Wh7iym0Bsw_aem_VP5Tg226LnimCACReti_Tw' target='_blank' style='color: var(--white); font-weight: bold;'>ce PDF</a>. IMPORTANT: la ligne de bus reliant Aix TGV et Lycée Janetti sera inaugurée en Septembre et les edt peuvent encore changer - je vous tiens au courant si c'est le cas."
-        data-en="From Aix-en-Provence TGV: Check the bus timetables on the <a href='https://zou.maregionsud.fr/' target='_blank' style='color: var(--white); font-weight: bold;'>ZOU! website</a>. IMPORTANT: the bus line that ties Aix TGV with Lycée Janetti will be set up in September and the timetables are not yet available."
-      >
-        Depuis Aix-en-Provence TGV : Consulte les horaires de bus sur <a href='https://zou.maregionsud.fr/public/media/file/2026-08/zou83_ligne93_brignoles_aix_en_provence_aix-tgv_ac-01092026-v05082026.pdf?fbclid=IwZnRzaATuH9RwZG9mAWZkaWQWUMl4lb8C7uu2sPCjqWDmEd8YViyqlGV4dG4DYWVtAjExAHNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR7PPfUQVB0cbohtQs0ipZ84z52zQl9pHtK1-o1wiWgakr9PRit4Wh7iym0Bsw_aem_VP5Tg226LnimCACReti_Tw' target='_blank' style='color: var(--white); font-weight: bold;'>ce PDF</a>. IMPORTANT: la ligne de bus reliant Aix TGV et Lycée Janetti sera inaugurée en Septembre et les edt peuvent encore changer - je vous tiens au courant si c'est le cas.
+        >
+          ce PDF
+        </a>.
+        <strong>IMPORTANT :</strong> la ligne de bus reliant Aix TGV et Lycée Janetti
+        sera inaugurée en septembre et les horaires peuvent encore changer -
+        je vous tiens au courant si c'est le cas.
       </li>
-    
+
       <li
-        data-fr="Depuis Marseille Saint-Charles : Consulte les horaires de la ligne ZOU 94 <a href='Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a>. <strong>Attention :</strong> les bus ne sont pas très fréquents, pense donc à bien vérifier les horaires."
-        data-en="From Marseille Saint-Charles: Check the ZOU line 94 timetable <a href='Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>here</a>. <strong>Warning:</strong> buses are not very frequent, so make sure you check the timetable carefully."
+        data-fr="Depuis Marseille Saint-Charles : Consulte les horaires de la ligne ZOU 94 <a href='Ligne_zou/zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>ici</a>. <strong>Attention :</strong> les bus ne sont pas très fréquents, pense donc à bien vérifier les horaires."
+        data-en="From Marseille Saint-Charles: Check the ZOU line 94 timetable <a href='Ligne_zou/zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf' target='_blank' style='color: var(--white); font-weight: bold;'>here</a>. <strong>Warning:</strong> buses are not very frequent, so make sure you check the timetable carefully."
       >
         Depuis Marseille Saint-Charles : consulte les horaires de la ligne ZOU 94
         <a
-          href="Ligne_zou\zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf"
+          href="Ligne_zou/zou83_ligne94_brignoles_saint_maximin_gardanne_marseille_ac-01092025.pdf"
           target="_blank"
-          style="color: var(--white); font-weight: bold;"
-        >ici</a>.
-        Attention : les bus ne sont pas très fréquents, pense donc à bien vérifier les horaires.
+        >
+          ici
+        </a>.
+        <strong>Attention :</strong> les bus ne sont pas très fréquents, pense donc à
+        bien vérifier les horaires.
       </li>
-    
+
       <li
         data-fr="Pour être récupéré.e : Si tu arrives en bus, n'oublie surtout pas de remplir le formulaire sur la page d'accueil pour que je sache à quel moment venir te chercher à l'arrêt."
         data-en="Pickup: If you are arriving by bus, don't forget to fill in the form on the homepage so we know when to come and pick you up at the bus stop."
       >
-        Pour être récupéré.e : Si tu arrives en bus, n'oublie surtout pas de remplir le formulaire sur la page d'accueil pour que je sache à quel moment venir te chercher à l'arrêt.
+        Pour être récupéré.e : Si tu arrives en bus, n'oublie surtout pas de remplir
+        le formulaire sur la page d'accueil pour que je sache à quel moment venir te
+        chercher à l'arrêt.
       </li>
+
     </ul>
 
 
     <!-- 2nd Subtitle & Text -->
-    <h2 data-fr="Parking et Arrivée" data-en="Parking & Arrival">Parking et Arrivée</h2>
-    <p data-fr="Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la cave. L&apos;espace dédié aux voitures est défini sur la carte ci-dessous. Si tu es en camping car ou van, suis les panneaux ou regarde la carte (zone orange), c&apos;est un peu plus loin que le parking."
-      data-en="Once you have passed the gate, follow the sign that says CAVE until you reach the wine cellar which will be where we hold meals and party. You&apos;ll see there is parking space along the vines there, and if you&apos;re coming with a camping car or van there&apos;s also a sign you can follow with the spots you can take. Check the map I made for the exact location of the parking and camping space and the access route.">
-      Une fois que tu as passé le portail, suis le signe CAVE jusqu&apos;à arriver à la cave (c&apos;est là où on
-      mangera et fêtera). Tu verras qu&apos;il y a de l&apos;espace parking tout au long des vignes au niveau de la
-      cave. L&apos;espace dédié aux voitures est délimité dans la carte que j&apos;ai faite ci-dessous. Si vous êtes en
-      camping car ou van vous pouvez suivre les panneaux ou regarder la carte aussi, c&apos;est un peu plus loin que le
-      parking.
+    <h2
+      data-fr="Parking et Arrivée"
+      data-en="Parking & Arrival"
+    >
+      Parking et Arrivée
+    </h2>
+
+    <p
+      data-fr="Une fois que tu as passé le portail, suis le signe CAVE jusqu'à arriver à la cave (c'est là où on mangera et fêtera). Tu verras qu'il y a de l'espace parking tout au long des vignes au niveau de la cave. L'espace dédié aux voitures est défini sur la carte ci-dessous. Si tu es en camping-car ou van, suis les panneaux ou regarde la carte (zone orange), c'est un peu plus loin que le parking."
+      data-en="Once you have passed the gate, follow the sign that says CAVE until you reach the wine cellar, which will be where we eat and party. You'll see there is parking space along the vines near the cellar. If you're coming with a campervan or van, follow the signs or check the map (orange area), as it is a little further from the parking area."
+    >
+      Une fois que tu as passé le portail, suis le signe CAVE jusqu'à arriver à la cave
+      (c'est là où on mangera et fêtera). Tu verras qu'il y a de l'espace parking tout
+      au long des vignes au niveau de la cave. L'espace dédié aux voitures est défini
+      sur la carte ci-dessous. Si tu es en camping-car ou van, suis les panneaux ou
+      regarde la carte (zone orange), c'est un peu plus loin que le parking.
     </p>
+
 
     <!-- 3rd Subtitle right above the map -->
-    <h2 id="map-section" data-fr="Carte" data-en="Map">Carte</h2>
+    <h2
+      id="map-section"
+      data-fr="Carte"
+      data-en="Map"
+    >
+      Carte
+    </h2>
 
-    <p data-fr="Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec l&apos;accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! <br><br> HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C&apos;EST NON SEULEMENT DANGEREUX MAIS AUSSI PAS CHEZ NOUS! <br><br> La légende est en haut à droite il faut cliquer sur l&apos;icône. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te donne rdv là bas. Quand tu arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te garer, mettre ta tente/ton van etc."
-      data-en="I nerded out and made a lil map of the vineyard so you can see where you&apos;re allowed to park, camp, where we&apos;ll be eating and partying, where to pee, shower.... Have a good look at it and please respect the areas as much as possible. <br><br> SUPER IMPORTANT DO NOT STRAY FROM THE AREAS MARKED ON THE MAP BC NOT ONLY IS IT DANGEROUS BUT ALSO NOT OUR PROPERTY LOL <br><br> The legend of the map is on the top right part of the map when clicking on the icon. The names like BASTIDON, MAZET, CABANON and CAVE are the names we use to talk about the houses so remember them in case we need to meet up there at some point. When you arrive, I&apos;ll meet you at the wine cellar and show you where to park, put your tent/van etc.">
-      Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec l&apos;accès et le parking, le lieu
-      des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max
-      stp! <br><br> HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C&apos;EST NON SEULEMENT DANGEREUX MAIS
-      AUSSI PAS CHEZ NOUS! <br><br> La légende est en haut à droite il faut cliquer sur l&apos;icône. Les noms BASTIDON,
-      MAZET, CABANON
-      et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens les bien au cas où on te
-      donne rdv là bas. Quand tu arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te garer,
-      mettre ta tente/ton van etc.
+    <p
+      data-fr="Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec l'accès et le parking, le lieu des repas et de la soirée, le camping, les WC et douches, la pharmacie... Essaye de respecter les zones au max stp! <br><br> HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C'EST NON SEULEMENT DANGEREUX MAIS AUSSI PAS CHEZ NOUS! <br><br> La légende est en haut à droite il faut cliquer sur l'icône. Les noms BASTIDON, MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes maisons donc retiens-les bien au cas où on te donne rendez-vous là-bas. Quand tu arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te garer, mettre ta tente/ton van, etc."
+      data-en="I nerded out and made a lil map of the vineyard so you can see where you're allowed to park, camp, where we'll be eating and partying, where to pee, shower.... Have a good look at it and please respect the areas as much as possible. <br><br> SUPER IMPORTANT DO NOT STRAY FROM THE AREAS MARKED ON THE MAP BC NOT ONLY IS IT DANGEROUS BUT ALSO NOT OUR PROPERTY LOL <br><br> The legend of the map is on the top right part of the map when clicking on the icon. The names like BASTIDON, MAZET, CABANON and CAVE are the names we use to talk about the houses so remember them in case we need to meet up there at some point. When you arrive, I'll meet you at the wine cellar and show you where to park, put your tent/van etc."
+    >
+      Ci-dessous un petit kiff de carto voilà j'ai fait une carte du vignoble avec
+      l'accès et le parking, le lieu des repas et de la soirée, le camping, les WC et
+      douches, la pharmacie... Essaye de respecter les zones au max stp!
+
+      <br><br>
+
+      <strong>
+        HYPER IMPORTANT NE SORS PAS DES ZONES MARQUÉES SUR LA CARTE C'EST NON SEULEMENT
+        DANGEREUX MAIS AUSSI PAS CHEZ NOUS!
+      </strong>
+
+      <br><br>
+
+      La légende est en haut à droite il faut cliquer sur l'icône. Les noms BASTIDON,
+      MAZET, CABANON et CAVE sont les termes qu'on utilise pour désigner les différentes
+      maisons donc retiens-les bien au cas où on te donne rendez-vous là-bas. Quand tu
+      arriveras je t'accueillerai au niveau de la cave, je te montrerai où tu peux te
+      garer, mettre ta tente/ton van, etc.
     </p>
 
-    <!-- YOUR QGIS CLOUD MAP IFRAME -->
-    <iframe class="qgis-map-frame" src="https://qgiscloud.com/rakmachine/Deffends/" allow="fullscreen"
-      title="bisous bisous smack">
+
+    <!-- QGIS Cloud Map -->
+    <iframe
+      class="qgis-map-frame"
+      src="https://qgiscloud.com/rakmachine/Deffends/"
+      allow="fullscreen"
+      loading="lazy"
+      title="Carte du Domaine du Deffends"
+    >
     </iframe>
+
   </main>
+
 
   <script>
     function toggleMenu() {
-      document.getElementById('nav-menu').classList.toggle('active');
+      const menu = document.getElementById("nav-menu");
+      const hamburger = document.querySelector(".hamburger");
+
+      const isActive = menu.classList.toggle("active");
+
+      hamburger.setAttribute("aria-expanded", isActive);
     }
 
-    let currentLang = 'fr';
-    function toggleLanguage() {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    let currentLang = "fr";
 
-      // Fixed innerHTML so links work and do not print raw HTML string
-      document.querySelectorAll('[data-fr]').forEach(el => {
+    function toggleLanguage() {
+      currentLang = currentLang === "fr" ? "en" : "fr";
+
+      document.getElementById("lang-toggle").innerText =
+        currentLang === "fr" ? "EN" : "FR";
+
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll("[data-fr]").forEach((el) => {
         el.innerHTML = el.getAttribute(`data-${currentLang}`);
       });
     }
   </script>
+
 </body>
 
 </html>
